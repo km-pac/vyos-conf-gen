@@ -10,34 +10,34 @@ declare -a sys_conf_key=("sys_hostname" "sys_timezone" "sys_login" "sys_ntp")
 declare -a snmp_conf=("snmp_community" "snmp_contact" "snmp_location")
 
 #loop through different system configuration
-while [[ $sys_done != "y" ]]
-do
-  declare -a sys_conf_value=()
-  for syskey in ${sys_conf_key[@]}; do
-    #sys_ntp config is optional;
-    if [[ $syskey == "sys_ntp" ]]
-    then
-        read -p "Do you want to set the NTP Server? [y/n]: " response
-        if [[ $response == "n" ]]
-        then
-          echo "Skipping NTP Server setup"
-          break
-        fi
-    fi
-    read -p "Set $syskey to: " sys_value
-    sys_conf_value+=("$sys_value")
-    echo "Successfully set $syskey to $sys_value"
-  done
-  #outputs the set system configuration
-  for index in "${!sys_conf_key[@]}"; do
-      sys_key="${sys_conf_key[$index]}"
-      sys_value="${sys_conf_value[$index]}"
-      echo "$sys_key : $sys_value"
-  done
-  #confirm if satisfied with the configuration set
-  read -p "Are you satisfied with this SYS configuration? [y/n]: " sys_done
-done
-echo "Done with the SYSCONF"
+# while [[ $sys_done != "y" ]]
+# do
+#   declare -a sys_conf_value=()
+#   for syskey in ${sys_conf_key[@]}; do
+#     #sys_ntp config is optional;
+#     if [[ $syskey == "sys_ntp" ]]
+#     then
+#         read -p "Do you want to set the NTP Server? [y/n]: " response
+#         if [[ $response == "n" ]]
+#         then
+#           echo "Skipping NTP Server setup"
+#           break
+#         fi
+#     fi
+#     read -p "Set $syskey to: " sys_value
+#     sys_conf_value+=("$sys_value")
+#     echo "Successfully set $syskey to $sys_value"
+#   done
+#   #outputs the set system configuration
+#   for index in "${!sys_conf_key[@]}"; do
+#       sys_key="${sys_conf_key[$index]}"
+#       sys_value="${sys_conf_value[$index]}"
+#       echo "$sys_key : $sys_value"
+#   done
+#   #confirm if satisfied with the configuration set
+#   read -p "Are you satisfied with this SYS configuration? [y/n]: " sys_done
+# done
+
 #loop through different snmp configuration
 while [[ $snmp_done != "y" ]]
 do
