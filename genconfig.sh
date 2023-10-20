@@ -24,7 +24,7 @@ declare -a snmp_conf_keys=("snmp_community" "snmp_contact" "sys_banner" "sys_ntp
 #   fi
 # done
 key = "sys_ntp"
-if ["$key" -eq "sys_ntp"];
+if [["$key" == "sys_ntp"]]
 then
   echo "SYS NTP key here"
 fi
