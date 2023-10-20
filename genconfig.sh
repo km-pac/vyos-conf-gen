@@ -66,7 +66,15 @@ do
   read -p "Number of interafaces: " interface_count
   for ((int = 0; int < interface_count; int++)); do
     read -p "IP Address for eth$int: " ipv4_value
-    int_ipv4_values+=("$ipv4_value")
+    first_octet=$(echo "$ipv4_value" | cut -d' ' -f 1)
+    vlan_id=$(echo "$ipv4_value" | cut -d' ' -f 2)
+    if [[ $first_octet == "192" ]]
+    then 
+      int_ipv4_values+=("$first_octet.168.$vlan_id.1")
+    elif [[ $first_octet == "172" ]]
+    then
+      int_ipv4_values+=("$first_octet.0.$vlan_id.1")
+    fi
   done
   for index in "${!int_ipv4_values[@]}"; do
       interface="eth$index"
