@@ -38,7 +38,7 @@ do
   read -p "Are you satisfied with this configuration? [y/n]: " sys_done
 done
 
-cat << EOF > config.text
+cat << EOF > config.txt
 set system host-name ${sys_conf_value[0]}
 set system time-zone ${sys_conf_value[1]}
 set system login banner post-login ${sys_conf_value[2]}
