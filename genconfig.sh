@@ -24,7 +24,7 @@ declare -a snmp_conf_key=("snmp_community" "snmp_contact" "snmp_location")
 #           break
 #         fi
 #     fi
-#     read -p "Set $syskey to: " sys_value
+#     read -p "Set $syskey: " sys_value
 #     sys_conf_value+=("$sys_value")
 #     echo "Successfully set $syskey to $sys_value"
 #   done
@@ -43,14 +43,14 @@ while [[ $snmp_done != "y" ]]
 do
   declare -a snmp_conf_value=()
   for snmpkey in ${snmp_conf_key[@]}; do
-    read -p "Set $snmpkey to: " snmp_value
+    read -p "Set $snmpkey: " snmp_value
     snmp_conf_value+=("$snmp_value")
     echo "Successfully set $snmpkey to $snmp_value"
   done
   #outputs the set system configuration
-  for index in "${!sys_conf_key[@]}"; do
-      snmp_key="${sys_conf_key[$index]}"
-      snmp_value="${sys_conf_value[$index]}"
+  for index in "${!snmp_conf_key[@]}"; do
+      snmp_key="${snmp_conf_key[$index]}"
+      snmp_value="${snmp_conf_key[$index]}"
       echo "$snmp_key : $snmp_value"
   done
   #confirm if satisfied with the configuration set
