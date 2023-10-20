@@ -35,7 +35,7 @@ do
       echo "$sys_key : $sys_value"
   done
   #confirm if satisfied with the configuration set
-  read -p "Are you satisfied with this configuration? [y/n]: " sys_done
+  read -p "Are you satisfied with this SYS configuration? [y/n]: " sys_done
 done
 
 #loop through different system configuration
@@ -54,7 +54,7 @@ do
       echo "$snmp_key : $snmp_value"
   done
   #confirm if satisfied with the configuration set
-  read -p "Are you satisfied with this configuration? [y/n]: " snmp_done
+  read -p "Are you satisfied with this SNMP configuration? [y/n]: " snmp_done
 done
 
 cat << EOF >> config.txt
