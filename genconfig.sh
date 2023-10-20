@@ -10,7 +10,7 @@ declare -a sys_conf_key=("sys_hostname" "sys_timezone" "sys_banner" "sys_ntp")
 declare -a snmp_conf=("snmp_community" "snmp_contact" "sys_banner" "sys_ntp")
 
 #loop through different system configuration
-for key in $(seq ${sys_conf_key[@]}); do
+for key in ${sys_conf_key[@]}; do
   #sys_ntp config is optional;
   if [[ $key == "sys_ntp" ]]
   then
@@ -27,9 +27,10 @@ for key in $(seq ${sys_conf_key[@]}); do
 done
 
 #outputs the set system configuration
-for x in ${sys_conf_key[@]}; do
-  echo ${sys_conf_key[$x]} : ${sys_conf_value[$x]}
-done
+echo ${sys_conf_key[2]} : ${sys_conf_value[2]}
+# for x in ${sys_conf_key[@]}; do
+#   echo ${sys_conf_key[$x]} : ${sys_conf_value[$x]}
+# done
 
 
 
