@@ -8,10 +8,11 @@ touch config.txt
 
 #title font config
 heading_style=$(tput setaf 2)
+highlight_style=$(tput setaf 5)
 reset_style=$(tput sgr0)
 
 #array of system and snmp configuration
-declare -a sys_conf_key=("sys_hostname" "sys_timezone" "sys_login" "sys_ntp")
+declare -a sys_conf_key=("sys_hostname" "sys_timezone" "sys_banner" "sys_ntp")
 declare -a snmp_conf_key=("snmp_community" "snmp_contact" "snmp_location")
 
 # loop through different system configuration
@@ -25,10 +26,10 @@ do
     #sys_ntp config is optional;
     if [[ $syskey == "sys_ntp" ]]
     then
-        read -p "Do you want to set the NTP Server? [y/n]: " response
+        read -p "\nDo you want to set the NTP Server? [y/n]: " response
         if [[ $response == "n" ]]
         then
-          echo "Skipping NTP Server setup"
+          echo -e "Skipping NTP Server setup\n"
           break
         fi
     fi
@@ -39,7 +40,7 @@ do
   for index in "${!sys_conf_key[@]}"; do
       sys_key="${sys_conf_key[$index]}"
       sys_values="${sys_conf_values[$index]}"
-      echo "$sys_key : $sys_values"
+      echo "$sys_key : ${highlight_style}$sys_values"
   done
   #confirm if satisfied with the configuration set
   read -p "Are you satisfied with this SYS configuration? [y/n]: " sys_done
@@ -60,7 +61,7 @@ do
   for index in "${!snmp_conf_key[@]}"; do
       snmp_key="${snmp_conf_key[$index]}"
       snmp_values="${snmp_conf_values[$index]}"
-      echo "$snmp_key : $snmp_values"
+      echo "$snmp_key : ${highlight_style}$snmp_values"
   done
   #confirm if satisfied with the configuration set
   read -p "Are you satisfied with this SNMP configuration? [y/n]: " snmp_done
