@@ -26,7 +26,7 @@ do
     fi
     read -p "Set $key to: " sys_value
     sys_conf_value+=($sys_value)
-    echo "Successfully set $key to ${sys_conf_value[$key]}"
+    echo "Successfully set $key to $sys_value"
   done
   #outputs the set system configuration
   for index in "${!sys_conf_key[@]}"; do
