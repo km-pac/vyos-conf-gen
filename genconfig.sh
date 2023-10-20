@@ -86,7 +86,8 @@ do
     then
       ipv4_values+=("$first_octet.16.$vlan_id.1/$subnet_mask")
     else
-      echo -e "${warning_style}Error: Not a valid IP Address please follow the syntax!\n${reset_style}" 
+      echo -e "${warning_style}Error: Not a valid IP Address please follow the syntax!\n${reset_style}"
+      $(int--)
     fi
   done
   echo -e "\n"
