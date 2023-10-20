@@ -18,7 +18,7 @@ do
   read -p "Set $key to: " sys_value
   sys_conf[$key]=$sys_value
   echo "Successfully set $key to ${sys_conf[$key]}"
-  if [$key -eq "sys_ntp"];
+  if ["$key" -eq "sys_ntp"];
   then
     echo "SYS NTP key here"
   fi
