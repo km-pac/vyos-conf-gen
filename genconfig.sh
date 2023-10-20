@@ -87,7 +87,13 @@ do
       ipv4_values+=("$first_octet.16.$vlan_id.1/$subnet_mask")
     else
       echo -e "${warning_style}Error: Not a valid IP Address please follow the syntax!\n${reset_style}"
-      $(int--)
+      #wrong input decrements the i. This allows the user to input an ip add on the same ethernet number
+      if [[ $i == 0 ]]
+      then
+        $i=0
+      else
+        ((i--))
+      fi
     fi
   done
   echo -e "\n"
