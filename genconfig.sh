@@ -13,16 +13,21 @@ touch config.txt
 declare -a sys_conf_keys=("sys_hostname" "sys_timezone" "sys_banner" "sys_ntp")
 declare -a snmp_conf_keys=("snmp_community" "snmp_contact" "sys_banner" "sys_ntp")
 
-for key in ${sys_conf_keys[@]};
-do
-  read -p "Set $key to: " sys_value
-  sys_conf[$key]=$sys_value
-  echo "Successfully set $key to ${sys_conf[$key]}"
-  if ["$key" -eq "sys_ntp"];
-  then
-    echo "SYS NTP key here"
-  fi
-done
+# for key in ${sys_conf_keys[@]};
+# do
+#   read -p "Set $key to: " sys_value
+#   sys_conf[$key]=$sys_value
+#   echo "Successfully set $key to ${sys_conf[$key]}"
+#   if ["$key" -eq "sys_ntp"];
+#   then
+#     echo "SYS NTP key here"
+#   fi
+# done
+key = "sys_ntp"
+if ["$key" -eq "sys_ntp"];
+then
+  echo "SYS NTP key here"
+fi
 
   # if ["$key"=="sys_ntp"];
   # then
