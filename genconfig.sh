@@ -10,13 +10,18 @@ touch config.txt
 #snmp_conf_array = (snmp_community, snmp_contact, snmp_location)
 
 #array of system and snmp configuration
-sys_conf_key=("sys_hostname" "sys_timezone" "sys_banner" "sys_ntp")
-snmp_conf_key=("snmp_community" "snmp_contact" "sys_banner" "sys_ntp")
+declare -a sys_conf=("sys_hostname" "sys_timezone" "sys_banner" "sys_ntp")
+declare -a snmp_conf=("snmp_community" "snmp_contact" "sys_banner" "sys_ntp")
 
-for i in ${sys_conf_key[@]};
+for key in ${sys_conf[@]};
 do
-  read -p "Set ${sys_conf_key[$i]} to: " ${sys_value[$i]}
-  echo "Successfully set the ${sys_conf_key[$i]} to ${sys_conf_value[$i]}"
+  read -p "Set $key to: " sys_value
+  sys_conf['$key']+=$sys_value
+  echo "Successfully set $key to ${sys_conf[$key]}"
+
+
+
+  
   # if [${sys_conf_key[$i]} == "sys_ntp"]
   # then
   #   read -p "Do you want to set the NTP Server? " response
