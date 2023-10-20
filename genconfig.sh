@@ -28,7 +28,7 @@ done
 
 #outputs the set system configuration
 for key in ${sys_conf[@]}; do
-  echo $key
+  echo ${sys_conf[$key]}
 done
 
 
