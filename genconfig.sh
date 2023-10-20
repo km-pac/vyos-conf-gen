@@ -8,7 +8,7 @@ touch config.txt
 
 #title font config
 heading_style=$(tput setaf 5)
-highlight_style=$(tput setaf 5)
+highlight_style=$(tput setaf 2)
 warning_style=$(tput setaf 1)
 reset_style=$(tput sgr0)
 
@@ -93,9 +93,7 @@ do
       #wrong input decrements the i. This allows the user to input an ip add on the same ethernet number
       if [[ $i == 0 ]]
       then
-        $i=0
-      else
-        ((i--))
+        (( int-- ))
       fi
     fi
   done
