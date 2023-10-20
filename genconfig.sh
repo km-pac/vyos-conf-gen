@@ -16,9 +16,9 @@ reset_style=$(tput sgr0)
 # declare -a snmp_conf_key=("snmp_community" "snmp_contact" "snmp_location")
 
 # # loop through different system configuration
-# echo -e "\n${heading_style}================================${reset_style}"
-# echo -e "${heading_style}CONFIGURING SYSTEM CONFIGURATION${heading_style}"
-# echo -e "${heading_style}================================${reset_style}"
+# echo -e "\n${heading_style}================================================${reset_style}"
+# echo -e "${heading_style}\tCONFIGURING SYSTEM CONFIGURATION\t${heading_style}"
+# echo -e "${heading_style}================================================${reset_style}"
 # while [[ $sys_done != "y" ]]
 # do
 #   declare -a sys_conf_values=()
@@ -47,9 +47,9 @@ reset_style=$(tput sgr0)
 # done
 
 # # loop through different snmp configuration
-# echo -e "\n${heading_style}=========================${reset_style}"
-# echo -e "${heading_style}CONFIGURING SNMP SERVICES${reset_style}"
-# echo -e "${heading_style}=========================${reset_style}"
+# echo -e "\n${heading_style}=========================================${reset_style}"
+# echo -e "${heading_style}\tCONFIGURING SNMP SERVICES\t${reset_style}"
+# echo -e "${heading_style}=========================================${reset_style}"
 # while [[ $snmp_done != "y" ]]
 # do
 #   declare -a snmp_conf_values=()
@@ -68,9 +68,9 @@ reset_style=$(tput sgr0)
 # done
 
 # loop through interface configuration
-echo -e "${heading_style}\n================================${reset_style}"
+echo -e "${heading_style}\n======================================${reset_style}"
 echo -e "${heading_style}\tCONFIGURING INTERFACES\t${reset_style}"
-echo -e "${heading_style}================================${reset_style}"
+echo -e "${heading_style}======================================${reset_style}"
 while [[ $ipv4_done != 'y' ]]
 do
   declare -a ipv4_values=()
