@@ -12,9 +12,11 @@ declare -a snmp_conf_keys=("snmp_community" "snmp_contact" "sys_banner" "sys_ntp
 #loop through different system configuration
 for key in ${sys_conf_keys[@]}; do
   #sys_ntp config is optional;
-  if [[ $key == "sys_ntp" ]] then
+  if [[ $key == "sys_ntp" ]]
+  then
       read -p "Do you want to set the NTP Server? [y/n] " response
-      if [[ $response == "n" ]] then
+      if [[ $response == "n" ]]
+      then
         echo "Skipping NTP Server setup"
         break
       fi
