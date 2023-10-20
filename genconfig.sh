@@ -19,7 +19,7 @@ do
   sys_conf[$key]=$sys_value
   echo "Successfully set $key to ${sys_conf[$key]}"
   
-  if [$key == "sys_ntp"]
+  if [$key=="sys_ntp"]
   then
     echo "SYS NTP HERE"
     # read -p "Do you want to set the NTP Server? [y/n] " response
