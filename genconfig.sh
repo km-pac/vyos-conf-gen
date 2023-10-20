@@ -27,8 +27,8 @@ for key in ${sys_conf_key[@]}; do
 done
 
 #outputs the set system configuration
-for x in {1 .. ${#sys_conf_key[@]}}; do
-  echo ${sys_conf_key[$x]} : ${sys_conf_value[$x]}
+for x in ${#sys_conf_key[@]}; do
+  echo "${sys_conf_key[$x]} : ${sys_conf_value[$x]}"
 done
 
 
