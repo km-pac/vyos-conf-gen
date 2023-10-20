@@ -75,7 +75,7 @@ declare -a snmp_conf_key=("snmp_community" "snmp_contact" "snmp_location")
 #loop through interface configuration
 echo "CONFIGURING INTERFACES"
 read -p "Number of interafaces: " interface_count
-for index in $(seq interface_count); do
+for ((index = 0; index <= interface_count; index++)); do
   echo $index
 done
 
