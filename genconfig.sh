@@ -28,7 +28,9 @@ for key in ${sys_conf_key[@]}; do
 done
 
 #outputs the set system configuration
-echo "${sys_conf} is set tp ${sys_conf[sys_hostname]}"
+for x in ${sys_conf_key[@]}; do
+  echo ${sys_conf_key[$x]} : ${sys_conf_value[$x]}
+done
 
 
 
