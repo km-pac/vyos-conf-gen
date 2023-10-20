@@ -64,7 +64,7 @@ do
       echo "$sys_key : $sys_value"
   done
   #confirm if satisfied with the configuration set
-  read -p "Are you satisfied with this SNMP configuration? [y/n]: " sys_done
+  read -p "Are you satisfied with this SNMP configuration? [y/n]: " snmp_done
 done
 # do
 #   declare -a snmp_conf_value=()
