@@ -11,6 +11,7 @@ declare -a sys_conf_key=("sys_hostname" "sys_timezone" "sys_login" "sys_ntp")
 declare -a snmp_conf_key=("snmp_community" "snmp_contact" "snmp_location")
 
 #loop through different system configuration
+echo "CONFIGURING SYSTEM CONFIGURATION"
 while [[ $sys_done != "y" ]]
 do
   declare -a sys_conf_value=()
@@ -39,6 +40,7 @@ do
   read -p "Are you satisfied with this SYS configuration? [y/n]: " sys_done
 done
 
+echo "CONFIGURING SNMP SERVICES"
 #loop through different snmp configuration
 while [[ $snmp_done != "y" ]]
 do
