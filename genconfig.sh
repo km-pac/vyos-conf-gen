@@ -6,11 +6,12 @@
 touch config.txt
 
 #array of system and snmp configuration
-declare -a sys_conf=("sys_hostname" "sys_timezone" "sys_banner" "sys_ntp")
+declare -a sys_conf_key=("sys_hostname" "sys_timezone" "sys_banner" "sys_ntp")
+declate -a sys_conf_value=()
 declare -a snmp_conf=("snmp_community" "snmp_contact" "sys_banner" "sys_ntp")
 
 #loop through different system configuration
-for key in ${sys_conf[@]}; do
+for key in ${sys_conf_key[@]}; do
   #sys_ntp config is optional;
   if [[ $key == "sys_ntp" ]]
   then
@@ -22,8 +23,8 @@ for key in ${sys_conf[@]}; do
       fi
   fi
   read -p "Set $key to: " sys_value
-  sys_conf[$key]=$sys_value
-  echo "Successfully set $key to ${sys_conf[$key]}"
+  sys_conf_value[$key]+=$sys_value
+  echo "Successfully set $key to ${sys_conf_value[$key]}"
 done
 
 #outputs the set system configuration
