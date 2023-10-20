@@ -9,6 +9,7 @@ touch config.txt
 #title font config
 heading_style=$(tput setaf 5)
 highlight_style=$(tput setaf 5)
+warning_style=$(tput setaf 1)
 reset_style=$(tput sgr0)
 
 # #array of system and snmp configuration
@@ -84,6 +85,8 @@ do
     elif [[ $first_octet == "172" ]]
     then
       ipv4_values+=("$first_octet.16.$vlan_id.1/$subnet_mask")
+    else
+      echo -e "${warning_style}Error: Not a valid IP Address please follow the syntax!\n${reset_style}" 
     fi
   done
   echo -e "\n"
@@ -111,7 +114,6 @@ $(
       echo "set interfaces ethernet eth$index address ${ipv4_values[$index]}"
   done
 )
-
 EOF
 
 
