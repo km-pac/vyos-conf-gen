@@ -15,8 +15,8 @@ snmp_conf_key=("snmp_community", "snmp_contact", "sys_banner", "sys_ntp")
 
 for i in ${sys_conf_key[@]};
 do
-  read -p "Set ${sys_conf_key[$i]} to: " sys_value
-  sys_conf_value+=("$sys_value")
+  read -p "Set ${sys_conf_key[$i]} to: " ${sys_value[$i]}
+  #sys_conf_value+=("$sys_value")
   echo "Successfully set the ${sys_conf_key[$i]} to ${sys_conf_value[$i]}"
   # if [${sys_conf_key[$i]} == "sys_ntp"]
   # then
