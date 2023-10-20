@@ -6,12 +6,18 @@
 rm -rf config.txt
 touch config.txt
 
+#title font config
+heading_style=$(tput setaf 2)
+reset_style=$(tput sgr0)
+
 #array of system and snmp configuration
 declare -a sys_conf_key=("sys_hostname" "sys_timezone" "sys_login" "sys_ntp")
 declare -a snmp_conf_key=("snmp_community" "snmp_contact" "snmp_location")
 
 # loop through different system configuration
-echo "\nCONFIGURING SYSTEM CONFIGURATION"
+echo -e "\n${heading_style}================================${reset_style}"
+echo -e "${heading_style}CONFIGURING SYSTEM CONFIGURATION${heading_style}"
+echo -e "${heading_style}================================${reset_style}\n"
 while [[ $sys_done != "y" ]]
 do
   declare -a sys_conf_values=()
@@ -40,7 +46,9 @@ do
 done
 
 # loop through different snmp configuration
-echo -e "\nCONFIGURING SNMP SERVICES"
+echo -e "\n${heading_style}=========================${reset_style}"
+echo -e "${heading_style}CONFIGURING SNMP SERVICES${reset_style}"
+echo -e "${heading_style}=========================${reset_style}\n"
 while [[ $snmp_done != "y" ]]
 do
   declare -a snmp_conf_values=()
@@ -59,7 +67,9 @@ do
 done
 
 # loop through interface configuration
-echo -e "\nCONFIGURING INTERFACES"
+echo -e "/n${heading_style}======================${heading_style}"
+echo -e "${heading_style}CONFIGURING INTERFACES${heading_style}"
+echo -e "${heading_style}======================${heading_style}/n"
 while [[ $ipv4_done != 'y' ]]
 do
   declare -a int_ipv4_values=()
