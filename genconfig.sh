@@ -25,7 +25,7 @@ do
         fi
     fi
     read -p "Set $syskey to: " sys_value
-    sys_conf_value+=($sys_value)
+    sys_conf_value+=("$sys_value")
     echo "Successfully set $syskey to $sys_value"
   done
   #outputs the set system configuration
@@ -44,7 +44,7 @@ do
   declare -a snmp_conf_value=()
   for snmpkey in ${snmp_conf_key[@]}; do
     read -p "Set $snmpkey to: " snmp_value
-    snmp_conf_value+=($snmp_value)
+    snmp_conf_value+=("$snmp_value")
     echo "Successfully set $snmpkey to $snmp_value"
   done
   #outputs the set system configuration
