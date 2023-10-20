@@ -16,17 +16,20 @@ declare -a snmp_conf=("snmp_community" "snmp_contact" "sys_banner" "sys_ntp")
 for key in ${sys_conf[@]};
 do
   read -p "Set $key to: " sys_value
-  sys_conf[$key]=$sys_value
+  sys_conf[$key] = $sys_value
   echo "Successfully set $key to ${sys_conf[$key]}"
-
-
-
   
-  # if [${sys_conf_key[$i]} == "sys_ntp"]
-  # then
-  #   read -p "Do you want to set the NTP Server? " response
-  #   if [
-  # fi
+  if [$key == "sys_ntp"]
+  then
+    read -p "Do you want to set the NTP Server? [y/n] " response
+    if [$response == "y"]
+    then
+      echo "Skipping NTP Server setup"
+    read -p "Set $key to: " ntp_value
+    sys_conf[$key] = ntp_value
+    fi
+  fi
+  
 done
 
 
