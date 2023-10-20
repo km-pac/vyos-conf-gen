@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Initial Router Setup
-clear
+
 #This is where the config will be saved
 rm -rf config.txt
 touch config.txt
@@ -17,11 +17,12 @@ reset_style=$(tput sgr0)
 # declare -a snmp_conf_key=("snmp_community" "snmp_contact" "snmp_location")
 
 # # loop through different system configuration
-# echo -e "\n${heading_style}================================================${reset_style}"
-# echo -e "${heading_style}\tCONFIGURING SYSTEM CONFIGURATION\t${heading_style}"
-# echo -e "${heading_style}================================================${reset_style}"
 # while [[ $sys_done != "y" ]]
 # do
+#   clear
+#   echo -e "\n${heading_style}================================================${reset_style}"
+#   echo -e "${heading_style}\tCONFIGURING SYSTEM CONFIGURATION\t${heading_style}"
+#   echo -e "${heading_style}================================================${reset_style}"
 #   declare -a sys_conf_values=()
 #   for syskey in ${sys_conf_key[@]}; do
 #     #sys_ntp config is optional;
@@ -48,11 +49,12 @@ reset_style=$(tput sgr0)
 # done
 
 # # loop through different snmp configuration
-# echo -e "\n${heading_style}=========================================${reset_style}"
-# echo -e "${heading_style}\tCONFIGURING SNMP SERVICES\t${reset_style}"
-# echo -e "${heading_style}=========================================${reset_style}"
 # while [[ $snmp_done != "y" ]]
 # do
+#   clear
+#   echo -e "\n${heading_style}=========================================${reset_style}"
+#   echo -e "${heading_style}\tCONFIGURING SNMP SERVICES\t${reset_style}"
+#   echo -e "${heading_style}=========================================${reset_style}"
 #   declare -a snmp_conf_values=()
 #   for snmpkey in ${snmp_conf_key[@]}; do
 #     read -p "Set ${highlight_style}$snmpkey${reset_style}: " snmp_value
@@ -69,11 +71,12 @@ reset_style=$(tput sgr0)
 # done
 
 # loop through interface configuration
-echo -e "${heading_style}\n======================================${reset_style}"
-echo -e "${heading_style}\tCONFIGURING INTERFACES\t${reset_style}"
-echo -e "${heading_style}======================================${reset_style}"
 while [[ $ipv4_done != 'y' ]]
 do
+  clear
+  echo -e "${heading_style}\n======================================${reset_style}"
+  echo -e "${heading_style}\tCONFIGURING INTERFACES\t${reset_style}"
+  echo -e "${heading_style}======================================${reset_style}"
   declare -a ipv4_values=()
   read -p "Number of interafaces: " interface_count
   echo -e "\nSYNTAX: FIRST_OCTET VLAN_ID SUBNET_MASK\n"
