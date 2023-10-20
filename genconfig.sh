@@ -6,7 +6,7 @@
 touch config.txt
 
 #array of system and snmp configuration
-declare -a sys_conf_key=("host-name" "time-zone" "login banner" "ntp server")
+declare -a sys_conf_key=("sys_hostname" "sys_timezone" "sys_login" "sys_ntp")
 declare -a snmp_conf=("snmp_community" "snmp_contact" "snmp_location")
 
 #loop through different system configuration
@@ -38,6 +38,13 @@ do
   read -p "Are you satisfied with this configuration? [y/n]: " sys_done
 done
 
+cat << EOF > config.text
+set system host-name ${sys_conf_value[0]}
+set system time-zone ${sys_conf_value[1]}
+set system login banner post-login ${sys_conf_value[2]}
+set system login banner pre-login ${sys_conf_value[2]}
+set system ntp server ${sys_conf_value[3]}
+EOF
 
 
 
