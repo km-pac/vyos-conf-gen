@@ -68,9 +68,9 @@ reset_style=$(tput sgr0)
 # done
 
 # loop through interface configuration
-echo -e "/n${heading_style}======================${heading_style}"
-echo -e "${heading_style}CONFIGURING INTERFACES${heading_style}"
-echo -e "${heading_style}======================${heading_style}"
+echo -e "${heading_style}\n======================${reset_style}"
+echo -e "${heading_style}CONFIGURING INTERFACES${reset_style}"
+echo -e "${heading_style}======================${reset_style}"
 while [[ $ipv4_done != 'y' ]]
 do
   declare -a ipv4_values=()
