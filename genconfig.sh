@@ -16,7 +16,7 @@ declare -a snmp_conf=("snmp_community" "snmp_contact" "sys_banner" "sys_ntp")
 for key in ${sys_conf[@]};
 do
   read -p "Set $key to: " sys_value
-  sys_conf['$key']+=$sys_value
+  sys_conf[$key]=$sys_value
   echo "Successfully set $key to ${sys_conf[$key]}"
 
 
