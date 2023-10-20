@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Initial Router Setup
-
+clear
 #This is where the config will be saved
 rm -rf config.txt
 touch config.txt
