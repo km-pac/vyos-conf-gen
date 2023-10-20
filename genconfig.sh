@@ -9,13 +9,12 @@ touch config.txt
 declare -a sys_conf_keys=("sys_hostname" "sys_timezone" "sys_banner" "sys_ntp")
 declare -a snmp_conf_keys=("snmp_community" "snmp_contact" "sys_banner" "sys_ntp")
 
-for key in ${sys_conf_keys[@]};
-do
-  if [[ $key == "sys_ntp" ]] 
-  then
+#loop through different system configuration
+for key in ${sys_conf_keys[@]}; do
+  #sys_ntp config is optional;
+  if [[ $key == "sys_ntp" ]] then
       read -p "Do you want to set the NTP Server? [y/n] " response
-      if [[ $response == "y" ]] 
-      then
+      if [[ $response == "n" ]] then
         echo "Skipping NTP Server setup"
         break
       fi
@@ -25,17 +24,10 @@ do
   echo "Successfully set $key to ${sys_conf[$key]}"
 done
 
-  # if ["$key"=="sys_ntp"];
-  # then
-  #   echo "SYS NTP HERE"
-  #   read -p "Do you want to set the NTP Server? [y/n] " response
-  #   if [$response == "y"];
-  #   then
-  #     echo "Skipping NTP Server setup"
-  #   read -p "Set $key to: " ntp_value
-  #   sys_conf[$key] = ntp_value
-  #   fi
-  # fi
+#outputs the set system configuration
+for key in ${sys_conf[@]}; do
+  echo $key
+done
 
 
 
