@@ -37,7 +37,7 @@ do
   #confirm if satisfied with the configuration set
   read -p "Are you satisfied with this SYS configuration? [y/n]: " sys_done
 done
-
+echo "Done with the SYSCONF"
 #loop through different snmp configuration
 while [[ $snmp_done != "y" ]]
 do
