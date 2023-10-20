@@ -71,7 +71,7 @@ declare -a snmp_conf_key=("snmp_community" "snmp_contact" "snmp_location")
 # EOF
 
 #loop through interface configuration
-echo -e "\nCONFIGURING INTERFACES"
+echo "\nCONFIGURING INTERFACES"
 while [[ int_done != 'y' ]]
 do
   declare -a int_ipv4add_values()
