@@ -7,7 +7,7 @@ touch config.txt
 
 #array of system and snmp configuration
 declare -a sys_conf_key=("sys_hostname" "sys_timezone" "sys_banner" "sys_ntp")
-declare -a snmp_conf=("snmp_community" "snmp_contact" "sys_banner" "sys_ntp")
+declare -a snmp_conf=("snmp_community" "snmp_contact" "snmp_location")
 
 #loop through different system configuration
 for key in ${sys_conf_key[@]}; do
@@ -27,8 +27,8 @@ for key in ${sys_conf_key[@]}; do
 done
 
 #outputs the set system configuration
-for x in ${#sys_conf_key[@]}; do
-  echo "${sys_conf_key[$x]} : ${sys_conf_value[$x]}"
+for x in {1..${#sys_conf_key[@]}}; do
+  echo ${sys_conf_key[$x]} : ${sys_conf_value[$x]}
 done
 
 
