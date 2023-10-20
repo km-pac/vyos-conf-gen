@@ -7,7 +7,7 @@ rm -rf config.txt
 touch config.txt
 
 #title font config
-heading_style=$(tput setaf 6)
+heading_style=$(tput setaf 5)
 highlight_style=$(tput setaf 5)
 reset_style=$(tput sgr0)
 
@@ -75,7 +75,7 @@ while [[ $ipv4_done != 'y' ]]
 do
   declare -a ipv4_values=()
   read -p "Number of interafaces: " interface_count
-  echo -e "\n FIRST_OCTET VLAN_ID SUBNET_MASK\n"
+  echo -e "\nSYNTAX: FIRST_OCTET VLAN_ID SUBNET_MASK\n"
   for ((int = 0; int < interface_count; int++)); do
     read -p "IP Address for ${highlight_style}eth$int${reset_style}: " first_octet vlan_id subnet_mask
     if [[ $first_octet == "192" ]]
