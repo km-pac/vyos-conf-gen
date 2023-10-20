@@ -3,6 +3,7 @@
 #Initial Router Setup
 
 #This is where the config will be saved
+rm -rf config.txt
 touch config.txt
 
 #array of system and snmp configuration
@@ -57,7 +58,7 @@ do
   read -p "Are you satisfied with this SNMP configuration? [y/n]: " snmp_done
 done
 
-cat << EOF >> config.txt
+cat << EOF > config.txt
 set system host-name ${sys_conf_value[0]}
 set system time-zone ${sys_conf_value[1]}
 set system login banner post-login ${sys_conf_value[2]}
