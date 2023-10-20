@@ -12,6 +12,7 @@ declare -a snmp_conf=("snmp_community" "snmp_contact" "snmp_location")
 #loop through different system configuration
 while [[ $sys_done != "y" ]]
 do
+  declare -a sys_conf_value=()
   for key in ${sys_conf_key[@]}; do
     #sys_ntp config is optional;
     if [[ $key == "sys_ntp" ]]
