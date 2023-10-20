@@ -7,7 +7,7 @@ touch config.txt
 
 #array of system and snmp configuration
 declare -a sys_conf_key=("sys_hostname" "sys_timezone" "sys_banner" "sys_ntp")
-declate -a sys_conf_value=()
+declare -a sys_conf_value=()
 declare -a snmp_conf=("snmp_community" "snmp_contact" "sys_banner" "sys_ntp")
 
 #loop through different system configuration
