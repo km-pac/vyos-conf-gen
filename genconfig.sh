@@ -15,22 +15,29 @@ declare -a snmp_conf_keys=("snmp_community" "snmp_contact" "sys_banner" "sys_ntp
 
 for key in ${sys_conf_keys[@]};
 do
-  read -p "Set $key to: " sys_value
-  sys_conf[$key]=$sys_value
-  echo "Successfully set $key to ${sys_conf[$key]}"
-  if [$key=="sys_ntp"];
+  if [ "$key" == "sys_ntp" ];
   then
     echo "SYS NTP HERE"
-    # read -p "Do you want to set the NTP Server? [y/n] " response
-    # if [$response == "y"];
-    # then
-    #   echo "Skipping NTP Server setup"
-    # read -p "Set $key to: " ntp_value
-    # sys_conf[$key] = ntp_value
-    # fi
+    do
+      read -p "Set $key to: " sys_value
+      sys_conf[$key]=$sys_value
+      echo "Successfully set $key to ${sys_conf[$key]}"
+    done
   fi
-  
 done
+
+  # if ["$key"=="sys_ntp"];
+  # then
+  #   echo "SYS NTP HERE"
+  #   read -p "Do you want to set the NTP Server? [y/n] " response
+  #   if [$response == "y"];
+  #   then
+  #     echo "Skipping NTP Server setup"
+  #   read -p "Set $key to: " ntp_value
+  #   sys_conf[$key] = ntp_value
+  #   fi
+  # fi
+
 
 
 
