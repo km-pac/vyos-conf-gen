@@ -13,8 +13,7 @@ touch config.txt
 sys_conf_key=("sys_hostname" "sys_timezone", "sys_banner", "sys_ntp")
 snmp_conf_key=("snmp_community", "snmp_contact", "sys_banner", "sys_ntp")
 
-#for ((i=0; i<${sys_conf_key[@]}; i++));
-for i in ${sys_conf_key[@]}
+for ((i=0; i<${sys_conf_key[@]}; i++));
 do
   read -p "Set ${sys_conf_key[$i]} to: " sys_value
   sys_conf_value+=("$sys_value")
