@@ -17,10 +17,7 @@ do
       if [[ $response == "y" ]] 
       then
         echo "Skipping NTP Server setup"
-      # else
-      #   read -p "Set $key to: " sys_value
-      #   sys_conf[$key]=$sys_value
-      #   echo "Successfully set $key to ${sys_conf[$key]}"
+        break
       fi
   fi
   read -p "Set $key to: " sys_value
