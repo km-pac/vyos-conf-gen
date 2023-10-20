@@ -76,7 +76,7 @@ do
   declare -a ipv4_values=()
   read -p "Number of interafaces: " interface_count
   for ((int = 0; int < interface_count; int++)); do
-    read -p "IP Address for eth$int: " first_octet vlan_id subnet_mask
+    read -p "IP Address for ${highlight_style}eth$int${reset_style}: " first_octet vlan_id subnet_mask
     if [[ $first_octet == "192" ]]
     then 
       ipv4_values+=("$first_octet.168.$vlan_id.1/$subnet_mask")
@@ -88,7 +88,7 @@ do
   for index in "${!ipv4_values[@]}"; do
       interface="eth$index"
       ipv4_address="${ipv4_values[$index]}"
-      echo "$interface : $ipv4_address"
+      echo "$interface : ${highlight_style}$ipv4_address${reset_style}"
   done
   read -p "Are you satisfied with this IPv4 configuration? [y/n]: " ipv4_done
 done
