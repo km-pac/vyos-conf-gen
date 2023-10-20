@@ -14,7 +14,7 @@ declare -a snmp_conf_key=("snmp_community" "snmp_contact" "snmp_location")
 # echo "\nCONFIGURING SYSTEM CONFIGURATION"
 # while [[ $sys_done != "y" ]]
 # do
-#   declare -a sys_conf_value=()
+#   declare -a sys_conf_values=()
 #   for syskey in ${sys_conf_key[@]}; do
 #     #sys_ntp config is optional;
 #     if [[ $syskey == "sys_ntp" ]]
@@ -26,15 +26,14 @@ declare -a snmp_conf_key=("snmp_community" "snmp_contact" "snmp_location")
 #           break
 #         fi
 #     fi
-#     read -p "Set $syskey: " sys_value
-#     sys_conf_value+=("$sys_value")
-#     echo "Successfully set $syskey to $sys_value"
+#     read -p "Set $syskey: " sys_values
+#     sys_conf_values+=("$sys_values")
 #   done
 #   #outputs the set system configuration
 #   for index in "${!sys_conf_key[@]}"; do
 #       sys_key="${sys_conf_key[$index]}"
-#       sys_value="${sys_conf_value[$index]}"
-#       echo "$sys_key : $sys_value"
+#       sys_values="${sys_conf_values[$index]}"
+#       echo "$sys_key : $sys_values"
 #   done
 #   #confirm if satisfied with the configuration set
 #   read -p "Are you satisfied with this SYS configuration? [y/n]: " sys_done
@@ -44,39 +43,49 @@ declare -a snmp_conf_key=("snmp_community" "snmp_contact" "snmp_location")
 # echo "\nCONFIGURING SNMP SERVICES"
 # while [[ $snmp_done != "y" ]]
 # do
-#   declare -a snmp_conf_value=()
+#   declare -a snmp_conf_values=()
 #   for snmpkey in ${snmp_conf_key[@]}; do
-#     read -p "Set $snmpkey: " snmp_value
-#     snmp_conf_value+=("$snmp_value")
-#     echo "Successfully set $snmpkey to $snmp_value"
+#     read -p "Set $snmpkey: " snmp_values
+#     snmp_conf_values+=("$snmp_values")
 #   done
 #   #outputs the set system configuration
 #   for index in "${!snmp_conf_key[@]}"; do
 #       snmp_key="${snmp_conf_key[$index]}"
-#       snmp_value="${snmp_conf_value[$index]}"
-#       echo "$snmp_key : $snmp_value"
+#       snmp_values="${snmp_conf_values[$index]}"
+#       echo "$snmp_key : $snmp_values"
 #   done
 #   #confirm if satisfied with the configuration set
 #   read -p "Are you satisfied with this SNMP configuration? [y/n]: " snmp_done
 # done
 
 # cat << EOF > config.txt
-# set system host-name ${sys_conf_value[0]}
-# set system time-zone ${sys_conf_value[1]}
-# set system login banner post-login ${sys_conf_value[2]}
-# set system login banner pre-login ${sys_conf_value[2]}
-# set system ntp server ${sys_conf_value[3]}
+# set system host-name ${sys_conf_values[0]}
+# set system time-zone ${sys_conf_values[1]}
+# set system login banner post-login ${sys_conf_values[2]}
+# set system login banner pre-login ${sys_conf_values[2]}
+# set system ntp server ${sys_conf_values[3]}
 
-# set snmp community ${snmp_conf_value[0]}
-# set snmp contact ${snmp_conf_value[1]}
-# set snmp location ${snmp_conf_value[2]}
+# set snmp community ${snmp_conf_values[0]}
+# set snmp contact ${snmp_conf_values[1]}
+# set snmp location ${snmp_conf_values[2]}
 # EOF
 
 #loop through interface configuration
-echo "CONFIGURING INTERFACES"
-read -p "Number of interafaces: " interface_count
-for ((index = 0; index <= interface_count; index++)); do
-  echo $index
+echo -e "\nCONFIGURING INTERFACES"
+while [[ int_done != 'y' ]]
+do
+  declare -a int_ipv4add_values()
+  read -p "Number of interafaces: " interface_count
+  for ((int = 0; int < interface_count; int++)); do
+    echo $int
+    read -p "IP Address for eth$int: " ipv4_value
+    int_ipv4add_values+=("$ipv4_value")
+  done
+  for index in "${!int_ipv4add_values[@]}"; do
+      interface="eth$index"
+      ipv4_address="${int_ipv4add_values[$index]}"
+      echo "$interface : $ipv4_address"
+  done
 done
 
 
