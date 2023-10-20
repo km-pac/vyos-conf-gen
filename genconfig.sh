@@ -60,7 +60,7 @@ declare -a snmp_conf_key=("snmp_community" "snmp_contact" "snmp_location")
 
 # loop through interface configuration
 echo -e "\nCONFIGURING INTERFACES"
-while [[ ipv4_done != 'y' ]]
+while [[ $ipv4_done != 'y' ]]
 do
   declare -a int_ipv4_values=()
   read -p "Number of interafaces: " interface_count
