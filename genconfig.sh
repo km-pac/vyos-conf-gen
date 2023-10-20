@@ -77,7 +77,6 @@ do
   declare -a int_ipv4_values=()
   read -p "Number of interafaces: " interface_count
   for ((int = 0; int < interface_count; int++)); do
-    echo $int
     read -p "IP Address for eth$int: " ipv4_value
     int_ipv4_values+=("$ipv4_value")
   done
