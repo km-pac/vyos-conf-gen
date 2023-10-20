@@ -73,7 +73,7 @@ do
       int_ipv4_values+=("$first_octet.168.$vlan_id.1")
     elif [[ $first_octet == "172" ]]
     then
-      int_ipv4_values+=("$first_octet.0.$vlan_id.1")
+      int_ipv4_values+=("$first_octet.16.$vlan_id.1")
     fi
   done
   for index in "${!int_ipv4_values[@]}"; do
