@@ -7,7 +7,7 @@ touch config.txt
 
 #array of system and snmp configuration
 declare -a sys_conf_key=("sys_hostname" "sys_timezone" "sys_login" "sys_ntp")
-declare -a snmp_conf=("snmp_community" "snmp_contact" "snmp_location")
+declare -a snmp_conf_key=("snmp_community" "snmp_contact" "snmp_location")
 
 #loop through different system configuration
 # while [[ $sys_done != "y" ]]
