@@ -68,13 +68,14 @@ reset_style=$(tput sgr0)
 # done
 
 # loop through interface configuration
-echo -e "${heading_style}\n======================${reset_style}"
-echo -e "${heading_style}CONFIGURING INTERFACES${reset_style}"
-echo -e "${heading_style}======================${reset_style}"
+echo -e "${heading_style}\n===========================${reset_style}"
+echo -e "${heading_style}\tCONFIGURING INTERFACES\t${reset_style}"
+echo -e "${heading_style}===========================${reset_style}"
 while [[ $ipv4_done != 'y' ]]
 do
   declare -a ipv4_values=()
   read -p "Number of interafaces: " interface_count
+  echo -e "\n FIRST_OCTET VLAN_ID SUBNET_MASK\n"
   for ((int = 0; int < interface_count; int++)); do
     read -p "IP Address for ${highlight_style}eth$int${reset_style}: " first_octet vlan_id subnet_mask
     if [[ $first_octet == "192" ]]
@@ -85,6 +86,7 @@ do
       ipv4_values+=("$first_octet.16.$vlan_id.1/$subnet_mask")
     fi
   done
+  echo -e "\n"
   for index in "${!ipv4_values[@]}"; do
       interface="eth$index"
       ipv4_address="${ipv4_values[$index]}"
