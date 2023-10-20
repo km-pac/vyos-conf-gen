@@ -41,21 +41,47 @@ done
 #loop through different system configuration
 while [[ $snmp_done != "y" ]]
 do
-  declare -a snmp_conf_value=()
-  for snmpkey in ${snmp_conf_key[@]}; do
-    read -p "Set $snmpkey to: " snmp_value
-    snmp_conf_value+=("$snmp_value")
-    echo "Successfully set $snmpkey to $snmp_value"
+  declare -a sys_conf_value=()
+  for syskey in ${sys_conf_key[@]}; do
+    #sys_ntp config is optional;
+    if [[ $syskey == "sys_ntp" ]]
+    then
+        read -p "Do you want to set the NTP Server? [y/n]: " response
+        if [[ $response == "n" ]]
+        then
+          echo "Skipping NTP Server setup"
+          break
+        fi
+    fi
+    read -p "Set $syskey to: " sys_value
+    sys_conf_value+=("$sys_value")
+    echo "Successfully set $syskey to $sys_value"
   done
   #outputs the set system configuration
   for index in "${!sys_conf_key[@]}"; do
-      snmp_key="${sys_conf_key[$index]}"
-      snmp_value="${sys_conf_value[$index]}"
-      echo "$snmp_key : $snmp_value"
+      sys_key="${sys_conf_key[$index]}"
+      sys_value="${sys_conf_value[$index]}"
+      echo "$sys_key : $sys_value"
   done
   #confirm if satisfied with the configuration set
-  read -p "Are you satisfied with this SNMP configuration? [y/n]: " snmp_done
+  read -p "Are you satisfied with this SYS configuration? [y/n]: " sys_done
 done
+# do
+#   declare -a snmp_conf_value=()
+#   for snmpkey in ${snmp_conf_key[@]}; do
+#     read -p "Set $snmpkey to: " snmp_value
+#     snmp_conf_value+=("$snmp_value")
+#     echo "Successfully set $snmpkey to $snmp_value"
+#   done
+#   #outputs the set system configuration
+#   for index in "${!sys_conf_key[@]}"; do
+#       snmp_key="${sys_conf_key[$index]}"
+#       snmp_value="${sys_conf_value[$index]}"
+#       echo "$snmp_key : $snmp_value"
+#   done
+#   #confirm if satisfied with the configuration set
+#   read -p "Are you satisfied with this SNMP configuration? [y/n]: " snmp_done
+# done
 
 cat << EOF >> config.txt
 set system host-name ${sys_conf_value[0]}
