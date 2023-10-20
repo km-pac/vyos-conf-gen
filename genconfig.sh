@@ -22,7 +22,7 @@ for key in ${sys_conf_key[@]}; do
       fi
   fi
   read -p "Set $key to: " sys_value
-  sys_conf_value += ($sys_value)
+  sys_conf_value+=($sys_value)
   echo "Successfully set $key to ${sys_conf_value[$key]}"
 done
 
