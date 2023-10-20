@@ -10,10 +10,10 @@ touch config.txt
 #snmp_conf_array = (snmp_community, snmp_contact, snmp_location)
 
 #array of system and snmp configuration
-declare -a sys_conf=("sys_hostname" "sys_timezone" "sys_banner" "sys_ntp")
-declare -a snmp_conf=("snmp_community" "snmp_contact" "sys_banner" "sys_ntp")
+declare -a sys_conf_keys=("sys_hostname" "sys_timezone" "sys_banner" "sys_ntp")
+declare -a snmp_conf_keys=("snmp_community" "snmp_contact" "sys_banner" "sys_ntp")
 
-for key in ${sys_conf[@]};
+for key in ${sys_conf_keys[@]};
 do
   read -p "Set $key to: " sys_value
   sys_conf[$key] = $sys_value
