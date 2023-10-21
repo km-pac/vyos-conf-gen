@@ -133,10 +133,10 @@ do
       read -p "IP Address for ${highlight_style}eth$int${reset_style}: " first_octet vlan_id subnet_mask
       if [[ $first_octet == "192" ]]
       then
-        ipv4_values+=("address $first_octet.168.$vlan_id.1/$subnet_mask")
+        ipv4_values+=("eth$int address $first_octet.168.$vlan_id.1/$subnet_mask")
       elif [[ $first_octet == "172" ]]
       then
-        ipv4_values+=("address $first_octet.16.$vlan_id.1/$subnet_mask")
+        ipv4_values+=("eth$int address $first_octet.16.0.1/$subnet_mask")
       else
         echo -e "${warning_style}Error: Not a valid IP Address please follow the syntax!\n${reset_style}"
         #wrong input decrements the i. This allows the user to input an ip add on the same ethernet number
