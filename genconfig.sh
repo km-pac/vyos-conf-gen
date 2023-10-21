@@ -7,7 +7,7 @@ rm -rf config.txt
 touch config.txt
 
 #title font config
-heading_style=$(tput setaf 3)
+heading_style=$(tput setaf 6)
 highlight_style=$(tput setaf 2)
 warning_style=$(tput setaf 1)
 reset_style=$(tput sgr0)
