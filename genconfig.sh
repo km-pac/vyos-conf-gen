@@ -108,10 +108,11 @@ do
             read -p "Set IP Address for VIF $vif_id: " first_octet subnet_mask
             ipv4_vif_values+=("eth$int vif $vif_id address $first_octet.168.$vif_id.1/$subnet_mask")
           fi
+          
           (( vif_count++ ))
-          int_vif_count="${int}_vif_count"
-          int_vif_count=$vif_count
-          echo $int_vif_count
+          "${int}_vif_count"=$vif_count
+          echo "${int}_vif_count"
+          
           read -p "${bold}ADD another VIF? [y/n]: ${reset_style}" vif_add_done
         done
         
