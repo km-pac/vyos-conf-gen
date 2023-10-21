@@ -92,7 +92,7 @@ do
           read -p "Set VIF number: " vif_id
           echo -e "\nSYNTAX: FIRST_OCTET SUBNET_MASK\n"
           read -p "Set IP Address for " first_octet subnet_mask
-          ipv4_values=("vif $vif_id address $first_octet.168.$vlan_id.1/$subnet_mask")
+          ipv4_values=("vif $vif_id address $first_octet.168.$vif_id.1/$subnet_mask")
           read -p "Do you want to add more VIF? [y/n]: " vif_add_done
         done
         for index in "${!ipv4_values[@]}"; do
