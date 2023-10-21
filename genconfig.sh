@@ -125,8 +125,10 @@ do
       echo ${!temp_ipv4_vif_values[@]}
       
       for index in "${!temp_ipv4_vif_values[@]}"; do
-        ipv4_vif_values+=${temp_ipv4_vif_values[$index]}
+        ipv4_vif_values+=($temp_ipv4_vif_values[$index])
       done
+
+      for index in 
     fi
     
     # elif
