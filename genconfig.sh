@@ -170,7 +170,7 @@ set snmp location ${snmp_conf_values[2]}
 
 $(
   for index in "${!ipv4_vif_values[@]}"; do
-      echo "set interfaces ethernet ${ipv4_values[$index]}"
+      echo "set interfaces ethernet ${ipv4_vif_values[$index]}"
   done
 )
 
