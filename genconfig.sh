@@ -10,6 +10,7 @@ touch config.txt
 heading_style=$(tput setaf 6)
 highlight_style=$(tput setaf 2)
 warning_style=$(tput setaf 1)
+bold=$(tput bold)
 reset_style=$(tput sgr0)
 
 # #array of system and snmp configuration
@@ -103,7 +104,7 @@ do
           int_vif_count="${int}_vif_count"
           int_vif_count=$vif_count
           
-          read -p "${highlight_style}ADD another VIF? [y/n]: ${reset_style}" vif_add_done
+          read -p "${bold}ADD another VIF? [y/n]: ${reset_style}" vif_add_done
           printf "\n"
         done
         for index in "${!ipv4_values[@]}"; do
