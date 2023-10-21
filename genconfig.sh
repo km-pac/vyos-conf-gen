@@ -7,7 +7,7 @@ rm -rf config.txt
 touch config.txt
 
 #title font config
-heading_style=$(tput setaf 5)
+heading_style=$(tput setaf 3)
 highlight_style=$(tput setaf 2)
 warning_style=$(tput setaf 1)
 reset_style=$(tput sgr0)
@@ -90,7 +90,7 @@ do
         while [[ $vif_add_done != "n" ]]
         do
           read -p "Set VIF number: " vif_id
-          read -p "Set VIF $vif_id as 192.168.$vif_id.1/24? [y/n]: " def_net
+          read -p "Set ${heading_style}VIF $vif_id${reset_style} as ${highlight_style}192.168.$vif_id.1/24${reset_style}? [y/n]: " def_net
           if [[ $def_net == y ]]
           then
             ipv4_values+=("eth$int vif $vif_id address 192.168.$vif_id.1/24")
@@ -103,7 +103,7 @@ do
           int_vif_count="${int}_vif_count"
           int_vif_count=$vif_count
           
-          read -p "Do you want to ADD another VIF? [y/n]: " vif_add_done
+          read -p "${heading_style}Do you want to ADD another VIF? [y/n]: ${reset_style}" vif_add_done
           printf "\n"
         done
         for index in "${!ipv4_values[@]}"; do
