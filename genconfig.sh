@@ -91,10 +91,7 @@ do
     else
       echo -e "${warning_style}Error: Not a valid IP Address please follow the syntax!\n${reset_style}"
       #wrong input decrements the i. This allows the user to input an ip add on the same ethernet number
-      if [[ $i == 0 ]]
-      then
-        (( int-- ))
-      fi
+      (( int-- ))
     fi
   done
   echo -e "\n"
