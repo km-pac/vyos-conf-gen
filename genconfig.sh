@@ -124,7 +124,8 @@ do
     
       for index in "${!temp_ipv4_vif_values[@]}"; do
         #ipv4_vif_values+=(${temp_ipv4_vif_values[$index]})
-        echo "${temp_ipv4_vif_values[$index]}"
+        # echo "${temp_ipv4_vif_values[$index]}"
+        ipv4_vif_values+=("${temp_ipv4_vif_values[$index]}")
       done
       printf "\n"
     fi
@@ -147,14 +148,13 @@ do
   done
 
   for index in "${!ipv4_vif_values[@]}"; do
-      ipv4_vif_address="${ipv4_vif_values[$index]}"
-      echo "${highlight_style}$ipv4_vif_address${reset_style}"
+    echo "${!ipv4_vif_values[$index]}"
   done
   
-  for index in "${!ipv4_values[@]}"; do
-      ipv4_address="${ipv4_values[$index]}"
-      echo "eth$int : ${highlight_style}$ipv4_address${reset_style}"
-  done
+  # for index in "${!ipv4_values[@]}"; do
+  #   ipv4_address="${ipv4_values[$index]}"
+  #   echo "eth$int : ${highlight_style}$ipv4_address${reset_style}"
+  # done
 
   # for eth in "${!ipv4_values[@]}"; do
   #   for 
