@@ -82,16 +82,16 @@ do
   read -p "Number of interafaces: " interface_count
 
   for ((int = 0; int < interface_count; int++)); do
+  
     #VIF Configuration prompt
     read -p "Do you want to configure ${highlight_style}eth$int${reset_style} as VIF? [y/n]: " response
     if [[ $response == "y" ]]
     then
       while [[ $vif_done != "y" ]]
       do
-        echo -e "\n "
         #reset all the values if not satisfied with the vif configuration
         vif_add_done="y"
-        int_vif_count="0"
+        (( int_vif_count == 0 ))
         declare -a ipv4_vif_values=()
         
         while [[ $vif_add_done != "n" ]]
@@ -111,10 +111,13 @@ do
           read -p "${bold}ADD another VIF? [y/n]: ${reset_style}" vif_add_done
           printf "\n"
         done
+
+        #outputs the vif configuration
         for index in "${!ipv4_vif_values[@]}"; do
           ipv4_address="${ipv4_vif_values[$index]}"
           echo "eth$int : ${highlight_style}$ipv4_address${reset_style}"
         done
+        
         read -p "Are you satisfied with this VIF configuration for eth$int? [y/n]: " vif_done
       done
       echo $int_vif_count
