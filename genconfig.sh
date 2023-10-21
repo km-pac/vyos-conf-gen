@@ -103,7 +103,7 @@ do
           int_vif_count="${int}_vif_count"
           int_vif_count=$vif_count
           
-          read -p "${heading_style}Do you want to ADD another VIF? [y/n]: ${reset_style}" vif_add_done
+          read -p "${highlight_style}ADD another VIF? [y/n]: ${reset_style}" vif_add_done
           printf "\n"
         done
         for index in "${!ipv4_values[@]}"; do
