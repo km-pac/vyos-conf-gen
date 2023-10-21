@@ -84,18 +84,22 @@ do
     read -p "Do you want to configure ${highlight_style}eth$int${reset_style} as VIF? [y/n]: " response
     if [[ $response == "y" ]]
     then
-    
       #vif for loop, depends on the vif count
       read -p "Number of VIFs: " vif_count
-      for ((vif = 0; vif < vif_cout; vif++)); do
-        while [[ vif_done != "y" ]];
-        do
+      while [[ vif_done != "y" ]]
+      do
+        for ((vif = 0; vif < vif_cout; vif++)); do
           read -p "Set VIF number: " vif_id
           echo -e "\nSYNTAX: FIRST_OCTET SUBNET_MASK\n"
           read -p "Set IP Address for " first_octet subnet_mask
           ipv4_values=("eth$int vif $vif_id address $first_octet.168.$vif_id.1/$subnet_mask")
-          read -p "Are you satisfied with VIF for ${highlight_style}eth$int${reset_style}? [y/n]: " vif_done
         done
+        for index in "${!ipv4_values[@]}"; do
+          interface="eth$index"
+          ipv4_address="${ipv4_values[$index]}"
+          echo "$interface : ${highlight_style}$ipv4_address${reset_style}"
+        done
+        read -p "Are you satisfied with this IPv4 configuration? [y/n]: " ipv4_don
       done
     fi
   
@@ -116,12 +120,12 @@ do
     # fi
   done
   
-  for index in "${!ipv4_values[@]}"; do
-      interface="eth$index"
-      ipv4_address="${ipv4_values[$index]}"
-      echo "$interface : ${highlight_style}$ipv4_address${reset_style}"
-  done
-  read -p "Are you satisfied with this IPv4 configuration? [y/n]: " ipv4_done
+  # for index in "${!ipv4_values[@]}"; do
+  #     interface="eth$index"
+  #     ipv4_address="${ipv4_values[$index]}"
+  #     echo "$interface : ${highlight_style}$ipv4_address${reset_style}"
+  # done
+  # read -p "Are you satisfied with this IPv4 configuration? [y/n]: " ipv4_done
 done
 
 #ouputs the config file for the VYOS Router
