@@ -99,7 +99,7 @@ do
             ipv4_values+=("eth$int vif $vif_id address $first_octet.168.$vif_id.1/$subnet_mask")
           fi
           int_vif_count="int${int}vif_count"
-          (( int_vif_count++ ))
+          (( ++int_vif_count ))
           read -p "Do you want to ADD another VIF? [y/n]: " vif_add_done
           printf "\n"
         done
