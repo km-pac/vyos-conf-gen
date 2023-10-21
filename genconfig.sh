@@ -113,6 +113,7 @@ do
 done
 
 cat << EOF > config.txt
+
 set system host-name ${sys_conf_values[0]}
 set system time-zone ${sys_conf_values[1]}
 set system login banner post-login ${sys_conf_values[2]}
