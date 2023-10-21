@@ -121,9 +121,8 @@ do
   done
   
   for index in "${!ipv4_values[@]}"; do
-      interface="eth$index"
       ipv4_address="${ipv4_values[$index]}"
-      echo "$interface : ${highlight_style}$ipv4_address${reset_style}"
+      echo "eth$int : ${highlight_style}$ipv4_address${reset_style}"
   done
   read -p "Are you satisfied with this IPv4 configuration? [y/n]: " ipv4_done
 done
