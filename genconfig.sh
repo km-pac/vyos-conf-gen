@@ -74,7 +74,6 @@ reset_style=$(tput sgr0)
 # loop through interface configuration
 while [[ $ipv4_done != 'y' ]]
 do
-  clear
   echo -e "${heading_style}\n======================================${reset_style}"
   echo -e "${heading_style}\tCONFIGURING INTERFACES\t${reset_style}"
   echo -e "${heading_style}======================================${reset_style}"
@@ -117,7 +116,7 @@ do
           ipv4_address="${ipv4_vif_values[$index]}"
           echo "eth$int : ${highlight_style}$ipv4_address${reset_style}"
         done
-        read -p "Are you satisfied with this VIF configuration for eth$int? [y/n]: " vif_done
+        read -p "Are you satisfied with this VIF configuration for eth$int? [y/n]: \n\n" vif_done
       done
       echo $int_vif_count
     fi
