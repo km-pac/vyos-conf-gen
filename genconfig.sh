@@ -108,7 +108,6 @@ do
       #     echo "$interface : ${highlight_style}$ipv4_address${reset_style}"
       #   done
       #   read -p "Are you satisfied with this IPv4 configuration? [y/n]: " vif_done
-      done
     fi
     
     # elif
