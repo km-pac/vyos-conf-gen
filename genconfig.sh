@@ -156,24 +156,30 @@ do
   read -p "Are you satisfied with this IPv4 configuration? [y/n]: " ipv4_done
 done
 
-#ouputs the config file for the VYOS Router
-# cat << EOF > config.txt
-# set system host-name ${sys_conf_values[0]}
-# set system time-zone ${sys_conf_values[1]}
-# set system login banner post-login ${sys_conf_values[2]}
-# set system login banner pre-login ${sys_conf_values[2]}
-# set system ntp server ${sys_conf_values[3]}
+ouputs the config file for the VYOS Router
+cat << EOF > config.txt
+set system host-name ${sys_conf_values[0]}
+set system time-zone ${sys_conf_values[1]}
+set system login banner post-login ${sys_conf_values[2]}
+set system login banner pre-login ${sys_conf_values[2]}
+set system ntp server ${sys_conf_values[3]}
 
-# set snmp community ${snmp_conf_values[0]}
-# set snmp contact ${snmp_conf_values[1]}
-# set snmp location ${snmp_conf_values[2]}
+set snmp community ${snmp_conf_values[0]}
+set snmp contact ${snmp_conf_values[1]}
+set snmp location ${snmp_conf_values[2]}
 
-# $(
-#   for index in "${!ipv4_values[@]}"; do
-#       echo "set interfaces ethernet eth$index ${ipv4_values[$index]}"
-#   done
-# )
-# EOF
+$(
+  for index in "${!ipv4_vif_values[@]}"; do
+      echo "set interfaces ethernet ${ipv4_values[$index]}"
+  done
+)
+
+$(
+  for index in "${!ipv4_values[@]}"; do
+      echo "set interfaces ethernet ${ipv4_values[$index]}"
+  done
+)
+EOF
 
 
 
