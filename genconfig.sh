@@ -89,7 +89,6 @@ do
       do
         while [[ $vif_add_done != "n" ]]
         do
-          (( int_vif_count = 0 ))
           read -p "Set VIF number: " vif_id
           read -p "Set VIF $vif_id as 192.168.$vif_id.1/24? [y/n]: " def_net
           if [[ $def_net == y ]]
@@ -100,6 +99,7 @@ do
             ipv4_values+=("eth$int vif $vif_id address $first_octet.168.$vif_id.1/$subnet_mask")
           fi
           int_vif_count="int${int}vif_count"
+          echo $int_vif_count
           (( int_vif_count++ ))
           read -p "Do you want to ADD another VIF? [y/n]: " vif_add_done
           printf "\n"
