@@ -93,7 +93,7 @@ do
         (( int_vif_count == 0 ))
         declare -a ipv4_vif_values=()
         
-        while [[ $vif_add_done != "n" && $vif_done == "y" ]]
+        while [[ $vif_add_done != "n" && $vif_done == "n" ]]
         do
           printf "\n"
           read -p "Set VIF number: " vif_id
