@@ -79,23 +79,23 @@ do
   echo -e "${heading_style}======================================${reset_style}"
   declare -a ipv4_values=()
   read -p "Number of interafaces: " interface_count
-  echo -e "\nSYNTAX: FIRST_OCTET VLAN_ID SUBNET_MASK\n"
+  echo -e "\nSYNTAX: FIRST_OCTET VLAN_ID\n"
   for ((int = 0; int < interface_count; int++)); do
     read -p "IP Address for ${highlight_style}eth$int${reset_style}: " first_octet vlan_id
     if [[ $first_octet == "192" ]]
     then 
-      read -p "Set subnet mask to /24? [y/n]" response
+      read -p "Set subnet mask to /24? [y/n]: " response
       if [[ $response == "y" ]]
       then 
-        $subnet_mask=24
+        $(subnet_mask=24)
       fi
       ipv4_values+=("$first_octet.168.$vlan_id.1/$subnet_mask")
     elif [[ $first_octet == "172" ]]
     then
-      read -p "Set subnet mask to /30? [y/n]" response
+      read -p "Set subnet mask to /30? [y/n]: " response
       if [[ $response == "y" ]]
       then 
-        $subnet_mask=30
+        $(subnet_mask=30)
       fi
       ipv4_values+=("$first_octet.16.$vlan_id.1/$subnet_mask")
     else
