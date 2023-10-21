@@ -96,6 +96,7 @@ do
         
         while [[ $vif_add_done != "n" ]]
         do
+          printf "\n"
           read -p "Set VIF number: " vif_id
           read -p "Set ${highlight_style}VIF $vif_id${reset_style} as ${highlight_style}192.168.$vif_id.1/24${reset_style}? [y/n]: " def_net
           if [[ $def_net == y ]]
@@ -109,7 +110,6 @@ do
           int_vif_count="${int}_vif_count"
           int_vif_count=$vif_count
           read -p "${bold}ADD another VIF? [y/n]: ${reset_style}" vif_add_done
-          printf "\n"
         done
 
         #outputs the vif configuration
