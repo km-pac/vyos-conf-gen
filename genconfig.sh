@@ -79,31 +79,47 @@ do
   echo -e "${heading_style}======================================${reset_style}"
   declare -a ipv4_values=()
   read -p "Number of interafaces: " interface_count
-  echo -e "\nSYNTAX: FIRST_OCTET VLAN_ID\n"
+  echo -e "\nSYNTAX: FIRST_OCTET VLAN_ID SUBNET_MASK\n"
+
   for ((int = 0; int < interface_count; int++)); do
-    read -p "IP Address for ${highlight_style}eth$int${reset_style}: " first_octet vlan_id
-    if [[ $first_octet == "192" ]]
-    then 
-      read -p "Set subnet mask to /24? [y/n]: " response
-      if [[ $response == "y" ]]
-      then 
-        (( subnet_mask = 24 ))
-      fi
-      ipv4_values+=("$first_octet.168.$vlan_id.1/$subnet_mask")
-    elif [[ $first_octet == "172" ]]
+    read -p "Do you want to configure ${highlight_style}eth$int${reset_style} as VIF? [y/n]: " response
+    if [[ $response == "y" ]]
     then
-      read -p "Set subnet mask to /30? [y/n]: " response
-      if [[ $response == "y" ]]
-      then 
-        (( subnet_mask = 30 ))
-      fi
-      ipv4_values+=("$first_octet.16.$vlan_id.1/$subnet_mask")
-    else
-      echo -e "${warning_style}Error: Not a valid IP Address please follow the syntax!\n${reset_style}"
-      #wrong input decrements the i. This allows the user to input an ip add on the same ethernet number
-      (( int-- ))
-    fi
+      while [[ vif_done != "y" ]];
+      do
+        while [[ vif_add_done != "y" ]];
+        do
+          read -p "Set VIF number: " vif_id
+          echo -e "\nSYNTAX: FIRST_OCTET SUBNET_MASK\n"
+          read -p "Set IP Address for " first_octet subnet_mask
+          ipv4_values=("vif $vif_id address $first_octet.168.$vlan_id.1/$subnet_mask")
+          read -p "Do you want to add more VIF? [y/n]: " vif_add_done
+        done
+        for index in "${!ipv4_values[@]}"; do
+          interface="eth$index"
+          ipv4_address="${ipv4_values[$index]}"
+          echo "$interface : ${highlight_style}$ipv4_address${reset_style}"
+        done
+        read -p "Are you satisfied with this IPv4 configuration? [y/n]: " vif_add_done
+      done
+      
+    # elif
+    # then
+    #   read -p "IP Address for ${highlight_style}eth$int${reset_style}: " first_octet vlan_id subnet_mask
+    #   if [[ $first_octet == "192" ]]
+    #   then
+    #     ipv4_values+=("address $first_octet.168.$vlan_id.1/$subnet_mask")
+    #   elif [[ $first_octet == "172" ]]
+    #   then
+    #     ipv4_values+=("address $first_octet.16.$vlan_id.1/$subnet_mask")
+    #   else
+    #     echo -e "${warning_style}Error: Not a valid IP Address please follow the syntax!\n${reset_style}"
+    #     #wrong input decrements the i. This allows the user to input an ip add on the same ethernet number
+    #     (( int-- ))
+    #   fi
+    # fi
   done
+  
   for index in "${!ipv4_values[@]}"; do
       interface="eth$index"
       ipv4_address="${ipv4_values[$index]}"
@@ -112,24 +128,24 @@ do
   read -p "Are you satisfied with this IPv4 configuration? [y/n]: " ipv4_done
 done
 
-cat << EOF > config.txt
+#ouputs the config file for the VYOS Router
+# cat << EOF > config.txt
+# set system host-name ${sys_conf_values[0]}
+# set system time-zone ${sys_conf_values[1]}
+# set system login banner post-login ${sys_conf_values[2]}
+# set system login banner pre-login ${sys_conf_values[2]}
+# set system ntp server ${sys_conf_values[3]}
 
-set system host-name ${sys_conf_values[0]}
-set system time-zone ${sys_conf_values[1]}
-set system login banner post-login ${sys_conf_values[2]}
-set system login banner pre-login ${sys_conf_values[2]}
-set system ntp server ${sys_conf_values[3]}
+# set snmp community ${snmp_conf_values[0]}
+# set snmp contact ${snmp_conf_values[1]}
+# set snmp location ${snmp_conf_values[2]}
 
-set snmp community ${snmp_conf_values[0]}
-set snmp contact ${snmp_conf_values[1]}
-set snmp location ${snmp_conf_values[2]}
-
-$(
-  for index in "${!ipv4_values[@]}"; do
-      echo "set interfaces ethernet eth$index address ${ipv4_values[$index]}"
-  done
-)
-EOF
+# $(
+#   for index in "${!ipv4_values[@]}"; do
+#       echo "set interfaces ethernet eth$index ${ipv4_values[$index]}"
+#   done
+# )
+# EOF
 
 
 
