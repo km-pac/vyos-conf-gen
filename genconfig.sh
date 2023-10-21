@@ -92,7 +92,7 @@ do
         while [[ $vif_add_done != "n" ]]
         do
           read -p "Set VIF number: " vif_id
-          read -p "Set ${heading_style}VIF $vif_id${reset_style} as ${highlight_style}192.168.$vif_id.1/24${reset_style}? [y/n]: " def_net
+          read -p "Set ${highlight_style}VIF $vif_id${reset_style} as ${highlight_style}192.168.$vif_id.1/24${reset_style}? [y/n]: " def_net
           if [[ $def_net == y ]]
           then
             ipv4_values+=("eth$int vif $vif_id address 192.168.$vif_id.1/24")
