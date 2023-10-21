@@ -79,7 +79,6 @@ do
   echo -e "${heading_style}======================================${reset_style}"
   declare -a ipv4_values=()
   read -p "Number of interafaces: " interface_count
-  echo -e "\nSYNTAX: FIRST_OCTET VLAN_ID SUBNET_MASK\n"
 
   for ((int = 0; int < interface_count; int++)); do
     read -p "Do you want to configure ${highlight_style}eth$int${reset_style} as VIF? [y/n]: " response
@@ -87,7 +86,7 @@ do
     then
       while [[ vif_done != "y" ]];
       do
-        while [[ vif_add_done != "y" ]];
+        while [[ vif_add_done != "n" ]];
         do
           read -p "Set VIF number: " vif_id
           echo -e "\nSYNTAX: FIRST_OCTET SUBNET_MASK\n"
@@ -100,10 +99,10 @@ do
           ipv4_address="${ipv4_values[$index]}"
           echo "$interface : ${highlight_style}$ipv4_address${reset_style}"
         done
-        read -p "Are you satisfied with this IPv4 configuration? [y/n]: " vif_done
+        read -p "Are you satisfied with VIF for ${highlight_style}eth$int${reset_style}? [y/n]: " vif_done
       done
     fi
-  done  
+  
     # elif
     # then
     #   read -p "IP Address for ${highlight_style}eth$int${reset_style}: " first_octet vlan_id subnet_mask
@@ -119,7 +118,7 @@ do
     #     (( int-- ))
     #   fi
     # fi
-  #done
+  done
   
   for index in "${!ipv4_values[@]}"; do
       interface="eth$index"
