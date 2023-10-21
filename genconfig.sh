@@ -81,16 +81,14 @@ do
   read -p "Number of interafaces: " interface_count
 
   for ((int = 0; int < interface_count; int++)); do
-
     #VIF Configuration prompt
-    read -p "\nDo you want to configure ${highlight_style}eth$int${reset_style} as VIF? [y/n]: " response
+    read -p "Do you want to configure ${highlight_style}eth$int${reset_style} as VIF? [y/n]: " response
     if [[ $response == "y" ]]
     then
       while [[ $vif_done != "y" ]]
       do
         while [[ $vif_add_done != "n" ]]
-        do
-          printf "\n"
+        do   
           read -p "\nSet VIF number: " vif_id
           read -p "Set VIF $vif_id as 192.168.$vif_id.1/24? [y/n]: " def_net
           if [[ $def_net == y ]]
@@ -101,6 +99,7 @@ do
             ipv4_values+=("eth$int vif $vif_id address $first_octet.168.$vif_id.1/$subnet_mask")
           fi
           read -p "Do you want to ADD another VIF? [y/n]: " vif_add_done
+          printf "\n"
         done
         for index in "${!ipv4_values[@]}"; do
           ipv4_address="${ipv4_values[$index]}"
