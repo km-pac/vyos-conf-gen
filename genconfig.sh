@@ -83,7 +83,7 @@ do
 
   
   for ((int = 0; int < interface_count; int++)); do
-    echo -e "${bold}Syntax: First_Octet Vlan_ID Subnet_Mask${reset_style}"
+    echo -e "\n${bold}Syntax: First_Octet Vlan_ID Subnet_Mask${reset_style}\n"
     #VIF Configuration prompt
     vif_done="n"
     vif_add_done="y"
@@ -129,7 +129,7 @@ do
 
     #configuration for normal ip assignment
     else
-      echo -e "${bold}Syntax: First_Octet Vlan_ID Subnet_Mask${reset_style}"
+      echo -e "\n${bold}Syntax: First_Octet Vlan_ID Subnet_Mask${reset_style}\n"
       read -p "IP Address for ${highlight_style}eth$int${reset_style}: " first_octet vlan_id subnet_mask
       if [[ $first_octet == "192" ]]
       then
