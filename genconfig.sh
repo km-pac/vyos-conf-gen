@@ -156,7 +156,7 @@ do
   read -p "Are you satisfied with this IPv4 configuration? [y/n]: " ipv4_done
 done
 
-ouputs the config file for the VYOS Router
+#ouputs the config file for the VYOS Router
 cat << EOF > config.txt
 set system host-name ${sys_conf_values[0]}
 set system time-zone ${sys_conf_values[1]}
