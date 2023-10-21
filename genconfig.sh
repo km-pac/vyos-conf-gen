@@ -89,16 +89,17 @@ do
       while [[ $vif_done != "y" ]]
       do
         vif_add_done="y"
+        declare -a ipv4_vif_values=()
         while [[ $vif_add_done != "n" ]]
         do
           read -p "Set VIF number: " vif_id
           read -p "Set ${highlight_style}VIF $vif_id${reset_style} as ${highlight_style}192.168.$vif_id.1/24${reset_style}? [y/n]: " def_net
           if [[ $def_net == y ]]
           then
-            ipv4_values+=("eth$int vif $vif_id address 192.168.$vif_id.1/24")
+            ipv4_vif_values+=("eth$int vif $vif_id address 192.168.$vif_id.1/24")
           else
             read -p "Set IP Address for VIF $vif_id: " first_octet subnet_mask
-            ipv4_values+=("eth$int vif $vif_id address $first_octet.168.$vif_id.1/$subnet_mask")
+            ipv4_vif_values+=("eth$int vif $vif_id address $first_octet.168.$vif_id.1/$subnet_mask")
           fi
           (( vif_count++ ))
           int_vif_count="${int}_vif_count"
@@ -106,8 +107,8 @@ do
           read -p "${bold}ADD another VIF? [y/n]: ${reset_style}" vif_add_done
           printf "\n"
         done
-        for index in "${!ipv4_values[@]}"; do
-          ipv4_address="${ipv4_values[$index]}"
+        for index in "${!ipv4_vif_values[@]}"; do
+          ipv4_address="${ipv4_vif_values[$index]}"
           echo "eth$int : ${highlight_style}$ipv4_address${reset_style}"
         done
         read -p "Are you satisfied with this VIF configuration for eth$int? [y/n]: " vif_done
