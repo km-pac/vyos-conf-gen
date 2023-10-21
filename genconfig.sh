@@ -81,10 +81,11 @@ do
   read -p "Number of interafaces: " interface_count
 
   for ((int = 0; int < interface_count; int++)); do
+
+    #VIF Configuration prompt
     read -p "Do you want to configure ${highlight_style}eth$int${reset_style} as VIF? [y/n]: " response
     if [[ $response == "y" ]]
     then
-      #vif for loop, depends on the vif count
       read -p "Number of VIFs: " vif_count
       while [[ vif_done != "y" ]]
       do
@@ -92,17 +93,17 @@ do
           read -p "Set VIF number: " vif_id
           echo -e "\nSYNTAX: FIRST_OCTET SUBNET_MASK\n"
           read -p "Set IP Address for " first_octet subnet_mask
-          ipv4_values=("eth$int vif $vif_id address $first_octet.168.$vif_id.1/$subnet_mask")
+          ipv4_values+=("eth$int vif $vif_id address $first_octet.168.$vif_id.1/$subnet_mask")
         done
         for index in "${!ipv4_values[@]}"; do
           interface="eth$index"
           ipv4_address="${ipv4_values[$index]}"
           echo "$interface : ${highlight_style}$ipv4_address${reset_style}"
         done
-        read -p "Are you satisfied with this IPv4 configuration? [y/n]: " ipv4_don
+        read -p "Are you satisfied with this IPv4 configuration? [y/n]: " vif_done
       done
     fi
-  
+    
     # elif
     # then
     #   read -p "IP Address for ${highlight_style}eth$int${reset_style}: " first_octet vlan_id subnet_mask
