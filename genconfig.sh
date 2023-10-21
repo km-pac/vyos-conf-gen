@@ -130,8 +130,7 @@ do
       printf "\n"
 
     #configuration for normal ip assignment
-    elif
-    then
+    else
       read -p "IP Address for ${highlight_style}eth$int${reset_style}: " first_octet vlan_id subnet_mask
       if [[ $first_octet == "192" ]]
       then
