@@ -127,6 +127,10 @@ do
         # echo "${temp_ipv4_vif_values[$index]}"
         ipv4_vif_values+=("${temp_ipv4_vif_values[$index]}")
       done
+
+      for index in "${!ipv4_vif_values[@]}"; do
+        echo "${!ipv4_vif_values[$index]}"
+      done
       printf "\n"
     fi
     
