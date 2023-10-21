@@ -148,7 +148,7 @@ do
   done
 
   for index in "${!ipv4_vif_values[@]}"; do
-    echo "${!ipv4_vif_values[$index]}"
+    echo "${ipv4_vif_values[$index]}"
   done
   
   # for index in "${!ipv4_values[@]}"; do
