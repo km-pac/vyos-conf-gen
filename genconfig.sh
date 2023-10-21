@@ -94,7 +94,6 @@ do
       do
         #reset all the values if not satisfied with the vif configuration
         vif_add_done="y"
-        declare -a ipv4_vif_values=()
         declare -a temp_ipv4_vif_values=()
         while [[ $vif_add_done != "n" ]]
         do
@@ -127,10 +126,7 @@ do
         # echo "${temp_ipv4_vif_values[$index]}"
         ipv4_vif_values+=("${temp_ipv4_vif_values[$index]}")
       done
-
-      for index in "${!ipv4_vif_values[@]}"; do
-        echo "${!ipv4_vif_values[$index]}"
-      done
+      
       printf "\n"
     fi
     
