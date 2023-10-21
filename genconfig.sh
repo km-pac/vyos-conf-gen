@@ -87,7 +87,7 @@ do
       read -p "Set subnet mask to /24? [y/n]: " response
       if [[ $response == "y" ]]
       then 
-        $(subnet_mask=24)
+        (( subnet_mask = 24 ))
       fi
       ipv4_values+=("$first_octet.168.$vlan_id.1/$subnet_mask")
     elif [[ $first_octet == "172" ]]
@@ -95,7 +95,7 @@ do
       read -p "Set subnet mask to /30? [y/n]: " response
       if [[ $response == "y" ]]
       then 
-        $(subnet_mask=30)
+        (( subnet_mask = 30 ))
       fi
       ipv4_values+=("$first_octet.16.$vlan_id.1/$subnet_mask")
     else
