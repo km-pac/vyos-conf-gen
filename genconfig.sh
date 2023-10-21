@@ -84,6 +84,9 @@ do
   for ((int = 0; int < interface_count; int++)); do
   
     #VIF Configuration prompt
+    vif_done="n"
+    vif_add_done="y"
+    
     read -p "Do you want to configure ${highlight_style}eth$int${reset_style} as VIF? [y/n]: " response
     if [[ $response == "y" ]]
     then
@@ -92,8 +95,8 @@ do
         #reset all the values if not satisfied with the vif configuration
         (( int_vif_count == 0 ))
         declare -a ipv4_vif_values=()
-        
-        while [[ $vif_add_done != "n" && $vif_done == "n" ]]
+
+        while [[ $vif_add_done != "n" ]]
         do
           printf "\n"
           read -p "Set VIF number: " vif_id
