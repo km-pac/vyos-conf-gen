@@ -92,15 +92,13 @@ do
         read -p "Set IP Address for VIF $vif_id: " first_octet subnet_mask
         ipv4_values+=("eth$int vif $vif_id address $first_octet.168.$vif_id.1/$subnet_mask")
         read -p "Do you want to ADD another VIF? [y/n]: " vif_add_done
-        (( int-- ))
       done
       break
       for index in "${!ipv4_values[@]}"; do
-        interface="eth$index"
         ipv4_address="${ipv4_values[$index]}"
-        echo "$interface : ${highlight_style}$ipv4_address${reset_style}"
+        echo "eth$int : ${highlight_style}$ipv4_address${reset_style}"
       done
-      read -p "Are you satisfied with this IPv4 configuration? [y/n]: " vif_done
+      read -p "Are you satisfied with this VIF configuration for eth$int? [y/n]: " vif_done
     fi
     
     # elif
