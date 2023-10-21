@@ -83,7 +83,7 @@ do
   for ((int = 0; int < interface_count; int++)); do
 
     #VIF Configuration prompt
-    read -p "Do you want to configure ${highlight_style}eth$int${reset_style} as VIF? [y/n]: " response
+    read -p "\nDo you want to configure ${highlight_style}eth$int${reset_style} as VIF? [y/n]: " response
     if [[ $response == "y" ]]
     then
       while [[ $vif_done != "y" ]]
@@ -91,7 +91,7 @@ do
         while [[ $vif_add_done != "n" ]]
         do
           read -p "Set VIF number: " vif_id
-          read -p "Set VIF$vif_id as 192.168.$vid_id.1/24? [y/n]: " def_net
+          read -p "Set VIF$vif_id as 192.168.$vif_id.1/24? [y/n]: " def_net
           if [[ $def_net == y ]]
           then
             ipv4_values+=("eth$int vif $vif_id address 192.168.$vif_id.1/24")
