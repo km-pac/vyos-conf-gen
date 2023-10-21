@@ -124,7 +124,7 @@ do
         #ipv4_vif_values+=(${temp_ipv4_vif_values[$index]})
         # echo "${temp_ipv4_vif_values[$index]}"
         ipv4_vif_values+=("${temp_ipv4_vif_values[$index]}")
-        echo ${ipv4_vif_values[$index]}
+        # echo ${ipv4_vif_values[$index]}
       done
       
       printf "\n"
