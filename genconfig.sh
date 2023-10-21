@@ -114,7 +114,8 @@ do
           ipv4_address="${ipv4_vif_values[$index]}"
           echo "eth$int : ${highlight_style}$ipv4_address${reset_style}"
         done
-        read -p "Are you satisfied with this VIF configuration for eth$int? [y/n]: \n\n" vif_done
+        read -p "Are you satisfied with this VIF configuration for eth$int? [y/n]: " vif_done
+        echo -e "\n"
       done
       echo $int_vif_count
     fi
