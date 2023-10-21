@@ -88,13 +88,14 @@ do
     then
       while [[ $vif_done != "y" ]]
       do
-        #reset all the values if not satisfied with the vif configuration
-        vif_add_done="y"
-        int_vif_count=0
-        declare -a ipv4_vif_values=()
-        
+        echo -e "\n"
         while [[ $vif_add_done != "n" ]]
         do
+          #reset all the values if not satisfied with the vif configuration
+          vif_add_done="y"
+          int_vif_count=0
+          declare -a ipv4_vif_values=()
+          
           read -p "Set VIF number: " vif_id
           read -p "Set ${highlight_style}VIF $vif_id${reset_style} as ${highlight_style}192.168.$vif_id.1/24${reset_style}? [y/n]: " def_net
           if [[ $def_net == y ]]
@@ -115,7 +116,6 @@ do
           echo "eth$int : ${highlight_style}$ipv4_address${reset_style}"
         done
         read -p "Are you satisfied with this VIF configuration for eth$int? [y/n]: " vif_done
-        echo -e "\n"
       done
       echo $int_vif_count
     fi
