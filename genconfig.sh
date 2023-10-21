@@ -128,37 +128,33 @@ do
       done
       
       printf "\n"
+
+    #configuration for normal ip assignment
+    elif
+    then
+      read -p "IP Address for ${highlight_style}eth$int${reset_style}: " first_octet vlan_id subnet_mask
+      if [[ $first_octet == "192" ]]
+      then
+        ipv4_values+=("address $first_octet.168.$vlan_id.1/$subnet_mask")
+      elif [[ $first_octet == "172" ]]
+      then
+        ipv4_values+=("address $first_octet.16.$vlan_id.1/$subnet_mask")
+      else
+        echo -e "${warning_style}Error: Not a valid IP Address please follow the syntax!\n${reset_style}"
+        #wrong input decrements the i. This allows the user to input an ip add on the same ethernet number
+        (( int-- ))
+      fi
     fi
-    
-    # elif
-    # then
-    #   read -p "IP Address for ${highlight_style}eth$int${reset_style}: " first_octet vlan_id subnet_mask
-    #   if [[ $first_octet == "192" ]]
-    #   then
-    #     ipv4_values+=("address $first_octet.168.$vlan_id.1/$subnet_mask")
-    #   elif [[ $first_octet == "172" ]]
-    #   then
-    #     ipv4_values+=("address $first_octet.16.$vlan_id.1/$subnet_mask")
-    #   else
-    #     echo -e "${warning_style}Error: Not a valid IP Address please follow the syntax!\n${reset_style}"
-    #     #wrong input decrements the i. This allows the user to input an ip add on the same ethernet number
-    #     (( int-- ))
-    #   fi
-    # fi
   done
 
+  #outputs the whole ipv4 address configuration
   for index in "${!ipv4_vif_values[@]}"; do
     echo "${ipv4_vif_values[$index]}"
   done
+  for index in "${!ipv4_values[@]}"; do
+    echo "${ipv4_values[$index]}"
+  done
   
-  # for index in "${!ipv4_values[@]}"; do
-  #   ipv4_address="${ipv4_values[$index]}"
-  #   echo "eth$int : ${highlight_style}$ipv4_address${reset_style}"
-  # done
-
-  # for eth in "${!ipv4_values[@]}"; do
-  #   for 
-  # done
   read -p "Are you satisfied with this IPv4 configuration? [y/n]: " ipv4_done
 done
 
