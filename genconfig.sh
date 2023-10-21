@@ -86,7 +86,6 @@ do
     if [[ $response == "y" ]]
     then
       while [[ $vif_done != "y" ]]
-      (( ${int}vif_count = 0 ))
       do
         while [[ $vif_add_done != "n" ]]
         do   
@@ -99,7 +98,7 @@ do
             read -p "Set IP Address for VIF $vif_id: " first_octet subnet_mask
             ipv4_values+=("eth$int vif $vif_id address $first_octet.168.$vif_id.1/$subnet_mask")
           fi
-          (( vif_count++ ))
+          (( ${int}_count++ ))
           read -p "Do you want to ADD another VIF? [y/n]: " vif_add_done
           printf "\n"
         done
