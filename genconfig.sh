@@ -113,6 +113,7 @@ do
         done
 
         #outputs the vif configuration
+        printf "\n"
         for index in "${!ipv4_vif_values[@]}"; do
           ipv4_address="${ipv4_vif_values[$index]}"
           echo "eth$int : ${highlight_style}$ipv4_address${reset_style}"
