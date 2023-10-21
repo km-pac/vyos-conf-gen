@@ -110,7 +110,6 @@ do
             temp_ipv4_vif_values+=("eth$int vif $vif_id address $first_octet.168.$vif_id.1/$subnet_mask")
             #ipv4_vif_values+=("eth$int vif $vif_id address $first_octet.168.$vif_id.1/$subnet_mask")
           fi
-          
           read -p "${bold}ADD another VIF? [y/n]: ${reset_style}" vif_add_done
         done
         
@@ -119,10 +118,11 @@ do
         for index in "${!temp_ipv4_vif_values[@]}"; do
           ipv4_address="${temp_ipv4_vif_values[$index]}"
           echo "eth$int : ${highlight_style}$ipv4_address${reset_style}"
-        done
-        
+        done 
         read -p "Are you satisfied with this VIF configuration for eth$int? [y/n]: " vif_done
       done
+
+      echo ${!temp_ipv4_vif_values[@]}
       
       for index in "${!temp_ipv4_vif_values[@]}"; do
         ipv4_vif_values+=${temp_ipv4_vif_values[$index]}
