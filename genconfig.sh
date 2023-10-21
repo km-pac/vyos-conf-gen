@@ -128,14 +128,14 @@ do
     # fi
   done
   
-  # for index in "${!ipv4_values[@]}"; do
-  #     ipv4_address="${ipv4_values[$index]}"
-  #     echo "eth$int : ${highlight_style}$ipv4_address${reset_style}"
-  # done
-
-  for eth in "${!ipv4_values[@]}"; do
-    for 
+  for index in "${!ipv4_values[@]}"; do
+      ipv4_address="${ipv4_values[$index]}"
+      echo "eth$int : ${highlight_style}$ipv4_address${reset_style}"
   done
+
+  # for eth in "${!ipv4_values[@]}"; do
+  #   for 
+  # done
   read -p "Are you satisfied with this IPv4 configuration? [y/n]: " ipv4_done
 done
 
