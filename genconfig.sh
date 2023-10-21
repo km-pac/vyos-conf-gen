@@ -90,6 +90,7 @@ do
       do
         while [[ $vif_add_done != "n" ]]
         do
+          printf "\n"
           read -p "\nSet VIF number: " vif_id
           read -p "Set VIF $vif_id as 192.168.$vif_id.1/24? [y/n]: " def_net
           if [[ $def_net == y ]]
