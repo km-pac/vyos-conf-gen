@@ -115,8 +115,7 @@ do
         #outputs the vif configuration
         printf "\n"
         for index in "${!temp_ipv4_vif_values[@]}"; do
-          ipv4_address="${temp_ipv4_vif_values[$index]}"
-          echo "eth$int : ${highlight_style}$ipv4_address${reset_style}"
+          echo "eth$int : ${highlight_style}${temp_ipv4_vif_values[$index]}${reset_style}"
         done 
         read -p "Are you satisfied with this VIF configuration for eth$int? [y/n]: " vif_done
       done
