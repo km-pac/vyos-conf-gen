@@ -110,7 +110,7 @@ do
           fi
           
           (( vif_count++ ))
-          "${int}_vif_count"=$vif_count
+          (( "${int}_vif_count" = $vif_count ))
           echo "${int}_vif_count"
           
           read -p "${bold}ADD another VIF? [y/n]: ${reset_style}" vif_add_done
