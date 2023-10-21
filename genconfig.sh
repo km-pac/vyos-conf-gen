@@ -109,6 +109,7 @@ do
         done
         read -p "Are you satisfied with this VIF configuration for eth$int? [y/n]: " vif_done
       done
+      echo $int_vif_count
     fi
     
     # elif
