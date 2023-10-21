@@ -100,9 +100,10 @@ do
           ipv4_address="${ipv4_values[$index]}"
           echo "$interface : ${highlight_style}$ipv4_address${reset_style}"
         done
-        read -p "Are you satisfied with this IPv4 configuration? [y/n]: " vif_add_done
+        read -p "Are you satisfied with this IPv4 configuration? [y/n]: " vif_done
       done
-      
+    fi
+  done  
     # elif
     # then
     #   read -p "IP Address for ${highlight_style}eth$int${reset_style}: " first_octet vlan_id subnet_mask
@@ -118,7 +119,7 @@ do
     #     (( int-- ))
     #   fi
     # fi
-  done
+  #done
   
   for index in "${!ipv4_values[@]}"; do
       interface="eth$index"
