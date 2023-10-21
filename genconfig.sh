@@ -86,21 +86,28 @@ do
     read -p "Do you want to configure ${highlight_style}eth$int${reset_style} as VIF? [y/n]: " response
     if [[ $response == "y" ]]
     then
-      read -p "Number of VIFs: " vif_count
-      while [[ $vif_done != "y" ]]
+      while [[ vif_add_done != "n" ]]
       do
-        for ((vif = 0; vif < vif_cout; vif++)); do
-          read -p "Set VIF number: " vif_id
-          echo -e "\nSYNTAX: FIRST_OCTET SUBNET_MASK\n"
-          read -p "Set IP Address for " first_octet subnet_mask
-          ipv4_values+=("eth$int vif $vif_id address $first_octet.168.$vif_id.1/$subnet_mask")
-        done
-        for index in "${!ipv4_values[@]}"; do
-          interface="eth$index"
-          ipv4_address="${ipv4_values[$index]}"
-          echo "$interface : ${highlight_style}$ipv4_address${reset_style}"
-        done
-        read -p "Are you satisfied with this IPv4 configuration? [y/n]: " vif_done
+        read -p "Set VIF number: " vif_id
+        read -p "Set IP Address for VIF $vid_id: " first_octet subnet_mask
+        ipv4_values+=("eth$int vif $vif_id address $first_octet.168.$vif_id.1/$subnet_mask")
+        read -p "Do you want to ADD another VIF? [y/n]: " vif_add_done
+      done
+      # read -p "Number of VIFs: " vif_count
+      # while [[ $vif_done != "y" ]]
+      # do
+      #   for ((vif = 0; vif < vif_cout; vif++)); do
+      #     read -p "Set VIF number: " vif_id
+      #     echo -e "\nSYNTAX: FIRST_OCTET SUBNET_MASK\n"
+      #     read -p "Set IP Address for " first_octet subnet_mask
+      #     ipv4_values+=("eth$int vif $vif_id address $first_octet.168.$vif_id.1/$subnet_mask")
+      #   done
+      #   for index in "${!ipv4_values[@]}"; do
+      #     interface="eth$index"
+      #     ipv4_address="${ipv4_values[$index]}"
+      #     echo "$interface : ${highlight_style}$ipv4_address${reset_style}"
+      #   done
+      #   read -p "Are you satisfied with this IPv4 configuration? [y/n]: " vif_done
       done
     fi
     
