@@ -87,7 +87,7 @@ do
     if [[ $response == "y" ]]
     then
       read -p "Number of VIFs: " vif_count
-      while [[ vif_done != "y" ]]
+      while [[ $vif_done != "y" ]]
       do
         for ((vif = 0; vif < vif_cout; vif++)); do
           read -p "Set VIF number: " vif_id
