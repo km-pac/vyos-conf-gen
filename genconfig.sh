@@ -121,16 +121,14 @@ do
       done
     
       for index in "${!temp_ipv4_vif_values[@]}"; do
-        #ipv4_vif_values+=(${temp_ipv4_vif_values[$index]})
-        # echo "${temp_ipv4_vif_values[$index]}"
         ipv4_vif_values+=("${temp_ipv4_vif_values[$index]}")
-        # echo ${ipv4_vif_values[$index]}
       done
       
       printf "\n"
 
     #configuration for normal ip assignment
     else
+      echo -e "Syntax: First_Octet Vlan_ID Subnet_Mask
       read -p "IP Address for ${highlight_style}eth$int${reset_style}: " first_octet vlan_id subnet_mask
       if [[ $first_octet == "192" ]]
       then
