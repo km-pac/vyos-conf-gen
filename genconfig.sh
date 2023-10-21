@@ -90,7 +90,7 @@ do
       do
         #reset all the values if not satisfied with the vif configuration
         vif_add_done="y"
-        (( int_vif_count = 0 ))
+        int_vif_count=0
         declare -a ipv4_vif_values=()
         
         while [[ $vif_add_done != "n" ]]
