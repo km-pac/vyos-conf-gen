@@ -121,12 +121,11 @@ do
         done 
         read -p "Are you satisfied with this VIF configuration for eth$int? [y/n]: " vif_done
       done
-      
-      echo ${!temp_ipv4_vif_values[@]}
-      
-      # for index in "${!temp_ipv4_vif_values[@]}"; do
-      #   ipv4_vif_values+=(${temp_ipv4_vif_values[$index]})
-      # done
+    
+      for index in "${!temp_ipv4_vif_values[@]}"; do
+        #ipv4_vif_values+=(${temp_ipv4_vif_values[$index]})
+        echo "${temp_ipv4_vif_values[$index]}"
+      done
       printf "\n"
     fi
     
