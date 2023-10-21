@@ -93,6 +93,8 @@ do
         vif_add_done="y"
         (( int_vif_count = 0 ))
         declare -a ipv4_vif_values=()
+
+        echo -e "${higlight_style}Configuring VIF for eth$int${reset_style}"
         
         while [[ $vif_add_done != "n" ]]
         do
