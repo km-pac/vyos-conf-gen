@@ -100,9 +100,8 @@ do
           fi
           (( vif_count++ ))
           
-          vif_int_count="${int}_vif_count"
-          vif_int_count=$vif_count
-          #$vif_int_count=$vif_count
+          int_vif_count="${int}_vif_count"
+          int_vif_count=$vif_count
           
           read -p "Do you want to ADD another VIF? [y/n]: " vif_add_done
           printf "\n"
