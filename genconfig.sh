@@ -146,7 +146,7 @@ do
       then
         ipv4_values+=("eth$int address ${first_octet}.${second_octet}.${vlan_id}.1/${subnet_mask}")
       else
-        read -p "Set ${cyan_style}IP Address${reset_style} for VIF $vif_id: " ip_address subnet_mask
+        read -p "Set ${cyan_style}IP Address${reset_style} for ${highlight_style}eth$int${reset_style}: " ip_address subnet_mask
         ipv4_values+=("eth$int address $ip_address/$subnet_mask")
         if ! [[ $ip_address =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]
         then
