@@ -129,21 +129,23 @@ do
 
     #configuration for normal ip assignment
     else
-      read -p "Set ${cyan_style}First Octet and VLAN ID${reset_style} for ${highlight_style}eth$int${reset_style}: " first_octet
+      read -p "Set ${cyan_style}First Octet and VLAN ID${reset_style} for ${highlight_style}eth$int${reset_style}: " first_octet vlan_id
       if [[ $first_octet == 192 ]]
       then
         second_octet="168"
         subnet_mask="24"
-      elif [[ $second_octet == 172 ]]
+      elif [[ $first_octet == 172 ]]
       then
-        second_octet=0
+        second_octet="0"
         subnet_mask="30"
       fi
+
+      echo "$first_octet $second_octet $vlan_id $subnet_mask"
       
-      read -p "Set ${cyan_style}eth$int${reset_style} as ${highlight_style}${first_octet}.${second_octet}.1/${subnet_mask}${reset_style}? [y/n]: " def_net 
+      read -p "Set ${cyan_style}eth$int${reset_style} as ${highlight_style}${first_octet}.${second_octet}.${vlan_id}.1/${subnet_mask}${reset_style}? [y/n]: " def_net 
       if [[ $def_net == "y" ]]
       then
-        ipv4_values+=("eth$int address $first_octet.$second_octet.$vlan_id.1/24")
+        ipv4_values+=("eth$int address ${first_octet}.${second_octet}.${vlan_id}.1/${subnet_mask}")
       else
         read -p "Set ${cyan_style}IP Address${reset_style} for VIF $vif_id: " ip_address subnet_mask
         ipv4_values+=("eth$int address $ip_address/$subnet_mask")
