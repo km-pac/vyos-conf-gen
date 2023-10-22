@@ -87,7 +87,8 @@ do
     #VIF Configuration prompt
     vif_done="n"
     vif_add_done="y"
-    
+
+    printf "\n"
     read -p "Do you want to configure ${highlight_style}eth$int${reset_style} as VIF? [y/n]: " response
     if [[ $response == "y" ]]
     then
