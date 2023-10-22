@@ -9,6 +9,7 @@ touch config.txt
 #title font config
 heading_style=$(tput setaf 5)
 highlight_style=$(tput setaf 2)
+cyan_stlye=$(tput setaf 6)
 warning_style=$(tput setaf 1)
 bold=$(tput bold)
 reset_style=$(tput sgr0)
@@ -36,7 +37,7 @@ reset_style=$(tput sgr0)
 #           break
 #         fi
 #     fi
-#     read -p "Set ${highlight_style}$syskey${reset_style}: " sys_values
+#     read -p "Set ${cyan_style}$syskey${reset_style}: " sys_values
 #     sys_conf_values+=("$sys_values")
 #   done
 #   #outputs the set system configuration
@@ -58,7 +59,7 @@ reset_style=$(tput sgr0)
 #   echo -e "${heading_style}=========================================${reset_style}"
 #   declare -a snmp_conf_values=()
 #   for snmpkey in ${snmp_conf_key[@]}; do
-#     read -p "Set ${highlight_style}$snmpkey${reset_style}: " snmp_value
+#     read -p "Set ${cyan_style}$snmpkey${reset_style}: " snmp_value
 #     snmp_conf_values+=("$snmp_value")
 #   done
 #   #outputs the set system configuration
@@ -83,7 +84,6 @@ do
 
   
   for ((int = 0; int < interface_count; int++)); do
-    echo -e "\n${bold}Syntax: First_Octet Vlan_ID Subnet_Mask${reset_style}\n"
     #VIF Configuration prompt
     vif_done="n"
     vif_add_done="y"
@@ -99,14 +99,14 @@ do
         while [[ $vif_add_done != "n" ]]
         do
           printf "\n"
-          read -p "Set VIF number: " vif_id
-          read -p "Set ${highlight_style}VIF $vif_id${reset_style} as ${highlight_style}192.168.$vif_id.1/24${reset_style}? [y/n]: " def_net
-          if [[ $def_net == y ]]
+          read -p "Set ${cyan_style}VIF number${reset_style}: " vif_id
+          read -p "Set ${cyan_style}VIF $vif_id${reset_style} as ${highlight_style}192.168.$vif_id.1/24${reset_style}? [y/n]: " def_net
+          if [[ $def_net == "y" ]]
           then
             temp_ipv4_vif_values+=("eth$int vif $vif_id address 192.168.$vif_id.1/24")
             #ipv4_vif_values+=("eth$int vif $vif_id address 192.168.$vif_id.1/24")
           else
-            read -p "Set IP Address for VIF $vif_id: " first_octet subnet_mask
+            read -p "Set ${cyan_style}IP Address${reset_style} for VIF $vif_id: " first_octet subnet_mask
             temp_ipv4_vif_values+=("eth$int vif $vif_id address $first_octet.168.$vif_id.1/$subnet_mask")
             #ipv4_vif_values+=("eth$int vif $vif_id address $first_octet.168.$vif_id.1/$subnet_mask")
           fi
