@@ -162,7 +162,7 @@ do
   printf "\n"
   for index in "${!ipv4_vif_values[@]}"; do
     declare -A eth_addresses
-    eth_addresses["$(echo ${ipv4_vif_values[$index]} | cut -d' ' -f1)"]+="$(echo ${ipv4_vif_values[$index]} | cut -d' ' -f5)"  
+    eth_addresses["$(echo ${ipv4_vif_values[$index]} | cut -d' ' -f1)"]+="$(echo ${ipv4_vif_values[$index]} | cut -d' ' -f5) "  
     echo "${highlight_style}${ipv4_vif_values[$index]}${reset_style}"
   done
 
