@@ -170,7 +170,7 @@ do
 
   
   for index in "${!ipv4_values[@]}"; do
-    # eth_addresses["$(echo ${ipv4_vif_values[$index]} | cut -d' ' -f1)"]+="$(echo ${ipv4_vif_values[$index]} | cut -d' ' -f3) "
+    eth_addresses["$(echo ${ipv4_values[$index]} | cut -d' ' -f1)"]+="$(echo ${ipv4_values[$index]} | cut -d' ' -f3) "
     echo "${highlight_style}${ipv4_values[$index]}${reset_style}"
   done
 
