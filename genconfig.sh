@@ -155,18 +155,22 @@ do
           (( int-- ))
         fi
       fi
-      
-      
     fi
   done
 
   #outputs the whole ipv4 address configuration
+  printf "\n"
   for index in "${!ipv4_vif_values[@]}"; do
-    echo "${ipv4_vif_values[$index]}"
+    declare -A eth_addresses
+    eth_addresses["$(echo ${ipv4_vif_values[$index]} | cut -d' ' -f1)"]="value"  
+    echo "${highlight_style}${ipv4_vif_values[$index]}${reset_style}"
+  
   done
   for index in "${!ipv4_values[@]}"; do
-    echo "${ipv4_values[$index]}"
+    echo "${highlight_style}${ipv4_values[$index]}${reset_style}"
   done
+
+  echo
   
   read -p "Are you satisfied with this IPv4 configuration? [y/n]: " ipv4_done
 done
