@@ -9,7 +9,7 @@ touch config.txt
 #title font config
 heading_style=$(tput setaf 5)
 highlight_style=$(tput setaf 2)
-cyan_stlye=$(tput setaf 6)
+cyan_style=$(tput setaf 6)
 warning_style=$(tput setaf 1)
 bold=$(tput bold)
 reset_style=$(tput sgr0)
