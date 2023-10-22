@@ -160,20 +160,23 @@ do
 
   #outputs the whole ipv4 address configuration
   printf "\n"
+  declare -A eth_addresses
   for index in "${!ipv4_vif_values[@]}"; do
-    declare -A eth_addresses
     eth_addresses["$(echo ${ipv4_vif_values[$index]} | cut -d' ' -f1)"]+="$(echo ${ipv4_vif_values[$index]} | cut -d' ' -f5) "  
     echo "${highlight_style}${ipv4_vif_values[$index]}${reset_style}"
+  done
+
+  
+
+  
+  for index in "${!ipv4_values[@]}"; do
+    eth_addresses["$(echo ${ipv4_vif_values[$index]} | cut -d' ' -f1)"]+="$(echo ${ipv4_vif_values[$index]} | cut -d' ' -f3) "
+    echo "${highlight_style}${ipv4_values[$index]}${reset_style}"
   done
 
   for key in "${!eth_addresses[@]}"; do
     echo "Key: $key"
     echo "Value: ${eth_addresses[$key]}"
-  done
-
-  
-  for index in "${!ipv4_values[@]}"; do
-    echo "${highlight_style}${ipv4_values[$index]}${reset_style}"
   done
 
   echo
