@@ -190,6 +190,11 @@ do
   echo -e "${heading_style}\tCONFIGURING FIREWALL\t${reset_style}"
   echo -e "${heading_style}======================================${reset_style}"
   read -p "Configure firewall rules? [y/n]: " firewall_done
+  if [[ $firewall_done == "n" ]]
+  then
+    firewall_done="y"
+  else
+    firewall_done="n"
   
   read -p "Are you satisfied with this Firewall configuration? [y/n]: " firewall_done
 done
