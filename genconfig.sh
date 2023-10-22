@@ -145,13 +145,15 @@ do
       else
         read -p "Set ${cyan_style}IP Address${reset_style} for VIF $vif_id: " ip_address subnet_mask
         ipv4_values+=("eth$int address $ip_address/$subnet_mask")
+        if ! [[ $ip_address =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]
+        then
+          echo -e "${warning_style}Error: Not a valid IP Address please follow the syntax!\n${reset_style}"
+          #wrong input decrements the i. This allows the user to input an ip add on the same ethernet number
+          (( int-- ))
+        fi
       fi
       
-      else
-        echo -e "${warning_style}Error: Not a valid IP Address please follow the syntax!\n${reset_style}"
-        #wrong input decrements the i. This allows the user to input an ip add on the same ethernet number
-        (( int-- ))
-      fi
+      
     fi
   done
 
