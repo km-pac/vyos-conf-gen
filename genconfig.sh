@@ -137,7 +137,7 @@ do
         subnet_mask="24"
       elif [[ $first_octet == 172 ]]
       then
-        second_octet="0"
+        second_octet="16"
         subnet_mask="30"
       fi
       
