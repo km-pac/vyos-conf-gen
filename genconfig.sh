@@ -129,14 +129,24 @@ do
 
     #configuration for normal ip assignment
     else
-      echo -e "\n${bold}Syntax: First_Octet Vlan_ID Subnet_Mask${reset_style}\n"
-      read -p "IP Address for ${highlight_style}eth$int${reset_style}: " first_octet vlan_id subnet_mask
-      if [[ $first_octet == "192" ]]
+      read -p "Set ${cyan_style}First Octet and VLAN ID${reset_style} for ${highlight_style}eth$int${reset_style}: " first_octet
+      if [[ $first_octet == 192 ]]
       then
-        ipv4_values+=("eth$int address $first_octet.168.$vlan_id.1/$subnet_mask")
-      elif [[ $first_octet == "172" ]]
+        second_octet=168
+      elif [[ $second_octet == 172 ]]
       then
-        ipv4_values+=("eth$int address $first_octet.16.$vlan_id.1/$subnet_mask")
+        second_octet=0
+      fi
+      
+      read -p "Set ${cyan_style}eth$int${reset_style} as ${highlight_style}${first_octet}.${second_octet}.$vif_id.1/24${reset_style}? [y/n]: " def_net 
+      if [[ $def_net == "y" ]]
+      then
+        ipv4_values+=("eth$int address $first_octet.$second_octet.$vlan_id.1/24")
+      else
+        read -p "Set ${cyan_style}IP Address${reset_style} for VIF $vif_id: " ip_address subnet_mask
+        ipv4_values+=("eth$int address $ip_address/$subnet_mask")
+      fi
+      
       else
         echo -e "${warning_style}Error: Not a valid IP Address please follow the syntax!\n${reset_style}"
         #wrong input decrements the i. This allows the user to input an ip add on the same ethernet number
