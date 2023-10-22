@@ -195,6 +195,7 @@ do
     firewall_done="y"
   else
     firewall_done="n"
+  fi
   
   read -p "Are you satisfied with this Firewall configuration? [y/n]: " firewall_done
 done
