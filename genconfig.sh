@@ -140,8 +140,6 @@ do
         second_octet="0"
         subnet_mask="30"
       fi
-
-      echo "$first_octet $second_octet $vlan_id $subnet_mask"
       
       read -p "Set ${cyan_style}eth$int${reset_style} as ${highlight_style}${first_octet}.${second_octet}.${vlan_id}.1/${subnet_mask}${reset_style}? [y/n]: " def_net 
       if [[ $def_net == "y" ]]
