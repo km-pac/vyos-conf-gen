@@ -75,7 +75,7 @@ reset_style=$(tput sgr0)
 while [[ $ipv4_done != 'y' ]]
 do
   clear
-  echo -e "${heading_style}\n======================================${reset_style}"
+  echo -e "${heading_style}======================================${reset_style}"
   echo -e "${heading_style}\tCONFIGURING INTERFACES\t${reset_style}"
   echo -e "${heading_style}======================================${reset_style}"
   declare -a ipv4_values=()
