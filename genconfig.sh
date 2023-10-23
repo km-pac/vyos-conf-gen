@@ -207,6 +207,7 @@ do
       while [[ $rule_num_done != "y" ]]
       do
         declare -a temp_rule_nums=()
+        printf "\n"
         read -p "Set ${cyan_style}Rule Number${reset_style}: " rule_num
         read -p "Set ${cyan_style}Protocol${reset_style} for ${highlight_style}$rule_num${reset_style}: " protocol
         read -p "Set ${cyan_style}Source Address${reset_style} for ${highlight_style}$rule_num${reset_style}: " src_address
@@ -222,11 +223,11 @@ do
       done
       read -p "${bold}ADD another Rule Number? [y/n]: ${reset_style}" rule_num_add_done
     done
-    
-    
-    for index in "${!temp_rule_nums[@]}"; do
-      rule_nums+=("${temp_rule_nums[$index]}")
-    done
+
+    echo ${!temp_rule_nums[@]}
+    # for index in "${!temp_rule_nums[@]}"; do
+    #   rule_nums+=("${temp_rule_nums[$index]}")
+    # done
 
     for key in "${!rule_nums[@]}"; do
       echo "Key: $key"
