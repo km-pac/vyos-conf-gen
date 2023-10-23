@@ -201,11 +201,11 @@ do
 
   while [[ firewall_add_done != "n" ]]
   do
+  
     while [[ rule_num_add_done != "n" ]]
     do
       while [[ rule_num_done != "y" ]]
       do
-        
         declare -a temp_rule_nums=()
         read -p "Set ${cyan_style}Rule Number${reset_style}: " rule_num
         read -p "Set ${cyan_style}Protocol${reset_style} for ${highlight_style}$rule_num${reset_style}: " protocol
@@ -213,15 +213,18 @@ do
         read -p "Set ${cyan_style}Destination Address${reset_style} for ${highlight_style}$rule_num${reset_style}: " dest_address
         read -p "Set ${cyan_style}Destination Port Number${reset_style} for ${highlight_style}$rule_num${reset_style}: " port_num
         temp_rule_nums["$rule_num"]+="$protocol $src_address $dest_address $port_num"
+        
         for key in "${!temp_rule_nums[@]}"; do
           echo "Key: $key"
           echo "Value: ${temp_rule_nums[$key]}"
         done
+        
         read -p "Are you satisfied with this rule number? [y/n]: " rule_num_done
       done
-      rule_num_done='n'
+      echo "PROCEEDED TO NEXT NUM"
       read -p "Do you want to add another rule number? [y/n]: " rule_num_add_done
     done
+    
     
     for index in "${!temp_rule_nums[@]}"; do
       rule_nums+=("${temp_rule_nums[$index]}")
