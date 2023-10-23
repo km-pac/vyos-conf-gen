@@ -203,6 +203,7 @@ do
   do  
     while [[ $rule_num_add_done != "n" ]]
     do
+      rule_num_done="n"
       while [[ $rule_num_done != "y" ]]
       do
         declare -a temp_rule_nums=()
