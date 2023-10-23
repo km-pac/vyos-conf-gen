@@ -205,6 +205,7 @@ do
     do
       while [[ rule_num_done != 'y' ]]
       do
+        rule_num_done = 'n'
         declare -a temp_rule_nums=()
         
         read -p "Set ${cyan_style}Rule Number${reset_style}: " rule_num
