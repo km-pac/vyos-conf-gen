@@ -219,6 +219,8 @@ do
           echo "Value: ${temp_rule_nums[$key]}"
         done
         
+        rule_num_done=$(echo "$rule_num_done" | tr -d '[:space:]' | tr '[:upper:]' '[:lower:]')
+  
         read -p "Are you satisfied with this rule number? [y/n]: " rule_num_done
       done
       echo "PROCEEDED TO NEXT NUM"
