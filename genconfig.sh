@@ -200,10 +200,9 @@ do
   declare -A rule_nums
 
   while [[ $firewall_add_done != "n" ]]
-  do
-  
-    # while [[ rule_num_add_done != "n" ]]
-    # do
+  do  
+    while [[ $rule_num_add_done != "n" ]]
+    do
       while [[ $rule_num_done != "y" ]]
       do
         declare -a temp_rule_nums=()
