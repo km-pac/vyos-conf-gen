@@ -223,7 +223,7 @@ do
       done
       
 
-      for index in "$rule_nums[@]"; do
+      for index in "${rule_nums[@]}"; do
         echo "${rule_nums[$index]}"
       done
       
