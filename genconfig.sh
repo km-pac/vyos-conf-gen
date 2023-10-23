@@ -199,12 +199,12 @@ do
   declare -A firewall_names
   declare -A rule_nums
 
-  while [[ firewall_add_done != "n" ]]
+  while [[ $firewall_add_done != "n" ]]
   do
   
     # while [[ rule_num_add_done != "n" ]]
     # do
-      while [[ rule_num_done != "y" ]]
+      while [[ $rule_num_done != "y" ]]
       do
         declare -a temp_rule_nums=()
         read -p "Set ${cyan_style}Rule Number${reset_style}: " rule_num
@@ -218,11 +218,9 @@ do
           echo "Key: $key"
           echo "Value: ${temp_rule_nums[$key]}"
         done
-        
-        rule_num_done=$(echo "$rule_num_done" | tr -d '[:space:]' | tr '[:upper:]' '[:lower:]')
-  
         read -p "Are you satisfied with this rule number? [y/n]: " rule_num_done
       done
+      
       echo "PROCEEDED TO NEXT NUM"
     #   read -p "Do you want to add another rule number? [y/n]: " rule_num_add_done
     # done
