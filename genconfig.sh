@@ -197,7 +197,7 @@ do
   fi
 
   declare -A firewall_names
-  # declare -a rule_nums
+  declare -a rule_nums
   
   while [[ $firewall_add_done != "n" ]]
   do  
@@ -216,12 +216,11 @@ do
         temp_rule_nums+=("$rule_num $protocol $src_address $dest_address $port_num")
         read -p "Are you satisfied with this rule number? [y/n]: " rule_num_done
       done
+      rule_nums+=("${!temp_rule_nums[$index]}")
       read -p "${bold}ADD another Rule Number? [y/n]: ${reset_style}" rule_num_add_done
     done
 
-    for index in "${!temp_rule_nums[@]}"; do
-      rule_nums+=("${!temp_rule_nums[$index]}")
-    done
+    
 
     for index in "${!rule_nums[@]}"; do
       echo "${rule_nums[$index]}"
