@@ -205,7 +205,7 @@ do
     do
       while [[ rule_num_done != "y" ]]
       do
-        rule_num_done='n'
+        
         declare -a temp_rule_nums=()
         read -p "Set ${cyan_style}Rule Number${reset_style}: " rule_num
         read -p "Set ${cyan_style}Protocol${reset_style} for ${highlight_style}$rule_num${reset_style}: " protocol
@@ -219,7 +219,7 @@ do
         done
         read -p "Are you satisfied with this rule number? [y/n]: " rule_num_done
       done
-    
+      rule_num_done='n'
       read -p "Do you want to add another rule number? [y/n]: " rule_num_add_done
     done
     
