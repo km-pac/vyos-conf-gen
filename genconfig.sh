@@ -218,6 +218,7 @@ do
       done
       
       for index in "${!temp_rule_nums[@]}"; do
+        echo "${temp_rule_nums[$index]}"
         rule_nums+=("${!temp_rule_nums[$index]}")
         echo "${rule_nums[$index]}"
       done
