@@ -230,13 +230,13 @@ do
       port_num+="$(echo ${rule_nums[$index]} | cut -d' ' -f8) "
     done
 
-    for index in "${!rule_nums[@]}"; do   
+    # for index in "${!rule_nums[@]}"; do   
       echo "RULE NUMBER ${rule_num[0]}:"
       echo "Action: ${action[0]}"
       echo "Source Address: ${src_address[0]}"
       echo "Destination Address: ${dest_address[0]}"
       echo "Destination Port: ${port_num[0]}"
-    done
+    # done
 
           
     read -p "Are you satisfied with this firewall configuration? [y/n]: " firewall_add_done
