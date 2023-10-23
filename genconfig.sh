@@ -222,8 +222,8 @@ do
       done
       
       echo "PROCEEDED TO NEXT NUM"
-    #   read -p "Do you want to add another rule number? [y/n]: " rule_num_add_done
-    # done
+      read -p "Do you want to add another rule number? [y/n]: " rule_num_add_done
+    done
     
     
     for index in "${!temp_rule_nums[@]}"; do
