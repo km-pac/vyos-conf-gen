@@ -211,9 +211,9 @@ do
       
       rule_nums["$rule_num"]+="$protocol $src_address $dest_address $port_num"
       
-      for key in "${!rule_num[@]}"; do
+      for key in "${!rule_nums[@]}"; do
         echo "Key: $key"
-        echo "Value: ${rule_num[$key]}"
+        echo "Value: ${rule_nums[$key]}"
       done
       
       read -p "Are you satisfied with this rule number? [y/n]: " rule_num_add_done
