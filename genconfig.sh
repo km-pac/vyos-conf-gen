@@ -169,14 +169,14 @@ reset_style=$(tput sgr0)
 #   done
 #   #interfaces with ipv4 addresses only
 #   for index in "${!ipv4_values[@]}"; do
-#     eth_addresses["$(echo ${ipv4_values[$index]} | cut -d' ' -f1)"]+="$(echo ${ipv4_values[$index]} | cut -d' ' -f3) "
+    # eth_addresses["$(echo ${ipv4_values[$index]} | cut -d' ' -f1)"]+="$(echo ${ipv4_values[$index]} | cut -d' ' -f3) "
 #     echo "${highlight_style}${ipv4_values[$index]}${reset_style}"
 #   done
 
 #   #DEBUGGING PRINTS IP ADDRESSES ASSOCIATED WITH ETHNUMS
-#   # for key in "${!eth_addresses[@]}"; do
-#   #   echo "Key: $key"
-#   #   echo "Value: ${eth_addresses[$key]}"
+#   # for eth in "${!eth_addresses[@]}"; do
+#   #   echo "eth: ${highlight_style}$eth${reset_style}"
+#   #   echo "Value: ${cyan_style}${eth_addresses[$eth]}${reset_style}"
 #   # done
   
 #   read -p "Are you satisfied with this IPv4 configuration? [y/n]: " ipv4_done
@@ -221,18 +221,23 @@ do
       read -p "${bold}ADD another Rule Number? [y/n]: ${reset_style}" rule_num_add_done
     done
 
-    for index in "${!rule_nums[@]}"; do
-      rule_num+="$(echo "${rule_nums[$index]}" | cut -d' ' -f1)"
-      action+="$(echo "${rule_nums[$index]}" | cut -d' ' -f2)"
-      src_address+="$(echo "${rule_nums[$index]}" | cut -d' ' -f3)"
-      dest_address+="$(echo "${rule_nums[$index]}" | cut -d' ' -f4)"
-      port_num+="$(echo "${rule_nums[$index]}" | cut -d' ' -f5)"
+    for index in "${!rule_nums[@]}"; do   
+      rule_num+="$(echo ${rule_nums[$index]} | cut -d' ' -f1) "
+      action+="$(echo ${rule_nums[$index]} | cut -d' ' -f2) "
+      src_address+="$(echo ${rule_nums[$index]} | cut -d' ' -f3) "
+      dest_address+="$(echo ${rule_nums[$index]} | cut -d' ' -f4) "
+      port_num+="$(echo ${rule_nums[$index]} | cut -d' ' -f5) "
+    done
+
+    for index in "${!rule_nums[@]}"; do   
       echo "RULE NUMBER ${rule_num[$index]}:"
       echo "Action: ${action[$index]}"
       echo "Source Address: ${src_address[$index]}"
       echo "Destination Address: ${dest_address[$index]}"
       echo "Destination Port: ${port_num[$index]}"
     done
+
+          
     read -p "Are you satisfied with this firewall configuration? [y/n]: " firewall_add_done
   done
   read -p "Are you satisfied with this Firewall configuration? [y/n]: " firewall_done
