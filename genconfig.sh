@@ -219,9 +219,7 @@ do
         done
         read -p "Are you satisfied with this rule number? [y/n]: " rule_num_done
       done
-      
-      echo "PROCEEDED TO NEXT NUM"
-      read -p "Do you want to add another rule number? [y/n]: " rule_num_add_done
+      read -p "${bold}ADD another Rule Number? [y/n]: ${reset_style}" rule_num_add_done
     done
     
     
@@ -234,7 +232,7 @@ do
       echo "Value: ${rule_nums[$key]}"
     done
 
-    read -p "Are you satisfied with this firewall configuration? [y/n]: " rule_num_add_done
+    read -p "Are you satisfied with this firewall configuration? [y/n]: " firewall_add_done
   done
 
   # key: firewall_name values: rulenum
