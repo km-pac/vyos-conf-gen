@@ -216,9 +216,11 @@ do
         temp_rule_nums+=("RULE $rule_num : $protocol $src_address $dest_address $port_num")
         read -p "Are you satisfied with this rule number? [y/n]: " rule_num_done
       done
-      for index in "${!temp_rule_nums[@]}"; do
-        echo "${!temp_rule_nums[$index]}"
-      done
+
+      echo "${temp_rule_nums[0]}"
+      # for index in "${!temp_rule_nums[@]}"; do
+      #   echo "${!temp_rule_nums[$index]}"
+      # done
       
       # for index in "${!temp_rule_nums[@]}"; do
       #   rule_nums+=("${!temp_rule_nums[$index]}")
