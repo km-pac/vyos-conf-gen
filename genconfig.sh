@@ -219,7 +219,7 @@ do
         for key in "${!temp_rule_nums[@]}"; do
           echo "Key: $key"
           echo "Value: ${temp_rule_nums[$key]}"
-        }
+        done
     
         read -p "Are you satisfied with this rule number? [y/n]: " rule_num_done
       done
