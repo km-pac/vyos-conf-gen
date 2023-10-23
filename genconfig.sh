@@ -213,7 +213,7 @@ do
         read -p "Set ${cyan_style}Source Address${reset_style} for ${highlight_style}$rule_num${reset_style}: " src_address
         read -p "Set ${cyan_style}Destination Address${reset_style} for ${highlight_style}$rule_num${reset_style}: " dest_address
         read -p "Set ${cyan_style}Destination Port Number${reset_style} for ${highlight_style}$rule_num${reset_style}: " port_num
-        temp_rule_nums+=("RULE $rule_num : $protocol $src_address $dest_address $port_num")
+        temp_rule_nums="RULE $rule_num : $protocol $src_address $dest_address $port_num"
         read -p "Are you satisfied with this rule number? [y/n]: " rule_num_done
       done
 
