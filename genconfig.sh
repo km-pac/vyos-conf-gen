@@ -231,11 +231,11 @@ do
     done
 
     for index in "${!rule_nums[@]}"; do   
-      echo "RULE NUMBER ${rule_num[$index]}:"
-      echo "Action: ${action[$index]}"
-      echo "Source Address: ${src_address[$index]}"
-      echo "Destination Address: ${dest_address[$index]}"
-      echo "Destination Port: ${port_num[$index]}"
+      echo "RULE NUMBER ${rule_num[0]}:"
+      echo "Action: ${action[0]}"
+      echo "Source Address: ${src_address[0]}"
+      echo "Destination Address: ${dest_address[0]}"
+      echo "Destination Port: ${port_num[0]}"
     done
 
           
