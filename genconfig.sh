@@ -209,7 +209,7 @@ do
       read -p "Set ${cyan_style}Destination Address${reset_style} for ${highlight_style}$rule_num${reset_style}: " dest_address
       read -p "Set ${cyan_style}Destination Port Number${reset_style} for ${highlight_style}$rule_num${reset_style}: " port_num
       
-      rule_num["test"]+=("$protocol $src_address $dest_address $port_num")
+      rule_num["test"]+="$protocol $src_address $dest_address $port_num"
       
       for key in "${!rule_num[@]}"; do
         echo "Key: $key"
@@ -222,21 +222,17 @@ do
     read -p "Are you satisfied with this firewall configuration? [y/n]: " rule_num_add_done
   done
 
-  key: firewall_name values: rulenum
-  key: rulenum values: etc
-
-
-
+  # key: firewall_name values: rulenum
+  # key: rulenum values: etc
+  #   key = firewall name 
+  #   values = 
   
-    key = firewall name 
-    values = 
-  
-    firewallname
-      rulenum
-        protocol 
-        source
-        dest
-        destport
+  #   firewallname
+  #     rulenum
+  #       protocol 
+  #       source
+  #       dest
+  #       destport
   done
   
   read -p "Are you satisfied with this Firewall configuration? [y/n]: " firewall_done
