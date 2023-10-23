@@ -218,29 +218,25 @@ do
         read -p "Are you satisfied with this rule number? [y/n]: " rule_num_done
       done
       rule_nums+=("${temp_rule_nums}")
-      for index in "${!rule_nums[@]}"; do
-        echo "${rule_nums[$index]}"
-      done
-      
       read -p "${bold}ADD another Rule Number? [y/n]: ${reset_style}" rule_num_add_done
     done
 
-    # for index in "${!rule_nums[@]}"; do
-    #   rule_num+="$(echo ${rule_nums[$index]} | cut -d' ' -f1) "
-    #   rule_num+="$(echo ${rule_nums[$index]} | cut -d' ' -f1) "
-    #   action+="$(echo ${rule_nums[$index]} | cut -d' ' -f2) "
-    #   src_address+="$(echo ${rule_nums[$index]} | cut -d' ' -f3) "
-    #   dest_address+="$(echo ${rule_nums[$index]} | cut -d' ' -f4) "
-    #   port_num+="$(echo ${rule_nums[$index]} | cut -d' ' -f5) "
-    # done
+    for index in "${!rule_nums[@]}"; do
+      rule_num+="$(echo ${rule_nums[$index]} | cut -d' ' -f2) "
+      action+="$(echo ${rule_nums[$index]} | cut -d' ' -f4) "
+      protocol+="$(echo ${rule_nums[$index]} | cut -d' ' -f5) "
+      src_address+="$(echo ${rule_nums[$index]} | cut -d' ' -f6) "
+      dest_address+="$(echo ${rule_nums[$index]} | cut -d' ' -f7) "
+      port_num+="$(echo ${rule_nums[$index]} | cut -d' ' -f8) "
+    done
 
-    # for index in "${!rule_nums[@]}"; do   
-    #   echo "RULE NUMBER ${rule_num[$index]}:"
-    #   echo "Action: ${action[$index]}"
-    #   echo "Source Address: ${src_address[$index]}"
-    #   echo "Destination Address: ${dest_address[$index]}"
-    #   echo "Destination Port: ${port_num[$index]}"
-    # done
+    for index in "${!rule_nums[@]}"; do   
+      echo "RULE NUMBER ${rule_num[$index]}:"
+      echo "Action: ${action[$index]}"
+      echo "Source Address: ${src_address[$index]}"
+      echo "Destination Address: ${dest_address[$index]}"
+      echo "Destination Port: ${port_num[$index]}"
+    done
 
           
     read -p "Are you satisfied with this firewall configuration? [y/n]: " firewall_add_done
