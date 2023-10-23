@@ -196,8 +196,8 @@ do
     break
   fi
 
-  declare -A firewall_names
-  declare -A rule_nums
+  declare -A firewall_name
+  declare -A rule_num
 
   while [[ firewall_add_done != 'n' ]]
   do
@@ -209,7 +209,7 @@ do
       read -p "Set ${cyan_style}Destination Address${reset_style} for ${highlight_style}$rule_num${reset_style}: " dest_address
       read -p "Set ${cyan_style}Destination Port Number${reset_style} for ${highlight_style}$rule_num${reset_style}: " port_num
       
-      rule_nums["$rule_num"]+=("$protocol $src_address $dest_address $port_num")
+      rule_num["$rule_num"]+=("$protocol $src_address $dest_address $port_num")
       
       for key in "${!rule_num[@]}"; do
         echo "Key: $key"
