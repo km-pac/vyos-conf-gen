@@ -192,9 +192,7 @@ do
   read -p "Configure firewall rules? [y/n]: " firewall_done
   if [[ $firewall_done == "n" ]]
   then
-    firewall_done="y"
-  else
-    firewall_done="n"
+    break
   fi
   
   read -p "Are you satisfied with this Firewall configuration? [y/n]: " firewall_done
