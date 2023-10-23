@@ -229,11 +229,11 @@ do
       rule_nums+=("${temp_rule_nums}")
     done
 
-    echo ${rule_nums[@]}
+    # echo ${rule_nums[@]}
 
-    # for index in "${rule_nums[@]}"; do
-    #   echo "${rule_nums[$index]}"
-    # done
+    for index in "${rule_nums[@]}"; do
+      echo "${rule_nums[$index]}"
+    done
 
 
     # for key in "${!rule_nums[@]}"; do
