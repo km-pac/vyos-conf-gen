@@ -224,15 +224,15 @@ do
       read -p "${bold}ADD another Rule Number? [y/n]: ${reset_style}" rule_num_add_done
     done
 
-    echo ${!temp_rule_nums[@]}
-    # for index in "${!temp_rule_nums[@]}"; do
-    #   rule_nums+=("${temp_rule_nums[$index]}")
-    # done
-
-    for key in "${!rule_nums[@]}"; do
-      echo "Key: $key"
-      echo "Value: ${rule_nums[$key]}"
+    for index in "${!temp_rule_nums[@]}"; do
+      # rule_nums+=("${temp_rule_nums[$index]}")
+      echo "${temp_rule_nums[$index]}"
     done
+
+    # for key in "${!rule_nums[@]}"; do
+    #   echo "Key: $key"
+    #   echo "Value: ${rule_nums[$key]}"
+    # done
 
     read -p "Are you satisfied with this firewall configuration? [y/n]: " firewall_add_done
   done
