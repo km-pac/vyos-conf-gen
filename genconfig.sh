@@ -224,48 +224,17 @@ do
     for index in "${!rule_nums[@]}"; do
       rule_num+="$(echo "${rule_nums[$index]}" | cut -d' ' -f1)"
       action+="$(echo "${rule_nums[$index]}" | cut -d' ' -f2)"
-      src_address+="$(echo "${src_address[$index]}" | cut -d' ' -f1)"
-      dest_address+="$(echo "${dest_address[$index]}" | cut -d' ' -f1)"
-      port_num+="$(echo "${port_num[$index]}" | cut -d' ' -f1)"
+      src_address+="$(echo "${rule_nums[$index]}" | cut -d' ' -f3)"
+      dest_address+="$(echo "${rule_nums[$index]}" | cut -d' ' -f4)"
+      port_num+="$(echo "${rule_nums[$index]}" | cut -d' ' -f5)"
       echo "RULE NUMBER ${rule_num[$index]}:"
       echo "Action: ${action[$index]}"
       echo "Source Address: ${src_address[$index]}"
       echo "Destination Address: ${dest_address[$index]}"
       echo "Destination Port: ${port_num[$index]}"
     done
-
-    # for index in "${!temp_rule_nums[@]}"; do
-    #   rule_nums+=("${temp_rule_nums}")
-    # done
-
-    # # echo ${rule_nums[@]}
-
-    # for index in "${rule_nums[@]}"; do
-    #   echo "${rule_nums[$index]}"
-    # done
-
-
-    # for key in "${!rule_nums[@]}"; do
-    #   echo "Key: $key"
-    #   echo "Value: ${rule_nums[$key]}"
-    # done
-
     read -p "Are you satisfied with this firewall configuration? [y/n]: " firewall_add_done
   done
-
-  # key: firewall_name values: rulenum
-  # key: rulenum values: etc
-  #   key = firewall name 
-  #   values = 
-  
-  #   firewallname
-  #     rulenum
-  #       protocol 
-  #       source
-  #       dest
-  #       destport
-  done
-  
   read -p "Are you satisfied with this Firewall configuration? [y/n]: " firewall_done
 done
 
