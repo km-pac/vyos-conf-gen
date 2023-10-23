@@ -231,7 +231,8 @@ do
 
     for index in "${!temp_rule_nums[@]}"; do
       # rule_nums+=("${temp_rule_nums[$index]}")
-      rule_nums+=("${temp_rule_nums[$index]}")
+      #rule_nums+=("${temp_rule_nums[$index]}")
+      echo "${temp_rule_nums[$index]}"
     done
 
     for index in "${rule_nums[@]}"; do
