@@ -217,9 +217,7 @@ do
         read -p "Are you satisfied with this rule number? [y/n]: " rule_num_done
       done
 
-      echo "${temp_rule_nums}"
-      rule_nums+=("${temp_rule_nums[0]}")
-    
+      rule_nums+=("${temp_rule_nums}")
       echo "${!rule_nums[@]}"
       
       for index in "${!temp_rule_nums[@]}"; do
