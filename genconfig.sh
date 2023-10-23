@@ -217,14 +217,11 @@ do
         read -p "Are you satisfied with this rule number? [y/n]: " rule_num_done
       done
 
-      echo "${temp_rule_nums[0]}"
-      # for index in "${!temp_rule_nums[@]}"; do
-      #   echo "${!temp_rule_nums[$index]}"
-      # done
-      
-      # for index in "${!temp_rule_nums[@]}"; do
-      #   rule_nums+=("${!temp_rule_nums[$index]}")
-      # done
+      rule_nums+=("${temp_rule_nums[0]}")
+  
+      for index in "${!temp_rule_nums[@]}"; do
+        rule_nums+=("${!temp_rule_nums[$index]}")
+      done
       read -p "${bold}ADD another Rule Number? [y/n]: ${reset_style}" rule_num_add_done
     done
 
