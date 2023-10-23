@@ -202,8 +202,8 @@ do
   while [[ firewall_add_done != "n" ]]
   do
   
-    while [[ rule_num_add_done != "n" ]]
-    do
+    # while [[ rule_num_add_done != "n" ]]
+    # do
       while [[ rule_num_done != "y" ]]
       do
         declare -a temp_rule_nums=()
@@ -222,8 +222,8 @@ do
         read -p "Are you satisfied with this rule number? [y/n]: " rule_num_done
       done
       echo "PROCEEDED TO NEXT NUM"
-      read -p "Do you want to add another rule number? [y/n]: " rule_num_add_done
-    done
+    #   read -p "Do you want to add another rule number? [y/n]: " rule_num_add_done
+    # done
     
     
     for index in "${!temp_rule_nums[@]}"; do
