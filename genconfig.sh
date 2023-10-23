@@ -218,14 +218,13 @@ do
       done
 
       rule_nums+=("${temp_rule_nums[0]}")
-  
+      echo "${!rule_nums[@]}"
+      
       for index in "${!temp_rule_nums[@]}"; do
         rule_nums+=("${!temp_rule_nums[$index]}")
       done
       read -p "${bold}ADD another Rule Number? [y/n]: ${reset_style}" rule_num_add_done
     done
-
-    
 
     for index in "${!rule_nums[@]}"; do
       echo "${rule_nums[$index]}"
