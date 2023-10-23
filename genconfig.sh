@@ -209,22 +209,29 @@ do
         declare -a temp_rule_nums=()
         printf "\n"
         read -p "Set ${cyan_style}Rule Number${reset_style}: " rule_num
+        read -p "Set ${cyan_style}Action${reset_style}: " action
         read -p "Set ${cyan_style}Protocol${reset_style} for ${highlight_style}$rule_num${reset_style}: " protocol
         read -p "Set ${cyan_style}Source Address${reset_style} for ${highlight_style}$rule_num${reset_style}: " src_address
         read -p "Set ${cyan_style}Destination Address${reset_style} for ${highlight_style}$rule_num${reset_style}: " dest_address
         read -p "Set ${cyan_style}Destination Port Number${reset_style} for ${highlight_style}$rule_num${reset_style}: " port_num
-        temp_rule_nums="RULE $rule_num : $protocol $src_address $dest_address $port_num"
+        temp_rule_nums="RULE $rule_num : $action $protocol $src_address $dest_address $port_num"
         read -p "Are you satisfied with this rule number? [y/n]: " rule_num_done
       done
-
       rule_nums+=("${temp_rule_nums}")
-      echo "${!rule_nums[@]}"
-      
       read -p "${bold}ADD another Rule Number? [y/n]: ${reset_style}" rule_num_add_done
     done
 
     for index in "${!rule_nums[@]}"; do
-      echo "${rule_nums[$index]}"
+      rule_num+="$(echo "${rule_nums[$index]}" | cut -d' ' -f1)"
+      action+="$(echo "${rule_nums[$index]}" | cut -d' ' -f2)"
+      src_address+="$(echo "${src_address[$index]}" | cut -d' ' -f1)"
+      dest_address+="$(echo "${dest_address[$index]}" | cut -d' ' -f1)"
+      port_num+="$(echo "${port_num[$index]}" | cut -d' ' -f1)"
+      echo "RULE NUMBER ${rule_num[$index]}:"
+      echo "Action: ${action[$index]}"
+      echo "Source Address: ${src_address[$index]}"
+      echo "Destination Address: ${dest_address[$index]}"
+      echo "Destination Port: ${port_num[$index]}"
     done
 
     # for index in "${!temp_rule_nums[@]}"; do
